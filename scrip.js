@@ -14,8 +14,8 @@
         const signupOverlay = document.getElementById('signupOverlay');
         const closeSignup = document.getElementById('closeSignup');
         const backToLoginLinks = document.querySelectorAll('.back-to-login-link');
-    const depozipt = document.getElementById('depozit');
-    const depoziptMobile = document.getElementById('depozitMobile');
+        const depozipt = document.getElementById('depozit');
+        const depoziptMobile = document.getElementById('depozitMobile');
         // Mobile menu toggle
         mobileMenuBtn.addEventListener('click', function() {
             mobileMenu.classList.toggle('active');
@@ -30,20 +30,15 @@
             }
         });
 
-        // depozipt all function — attach listeners only if elements exist
-        if (depozipt) {
-            depozipt.addEventListener('click', function(e) {
-                e.preventDefault();
-                loginOverlay.classList.add('active');
-            });
-        }
-
-        if (depoziptMobile) {
-            depoziptMobile.addEventListener('click', function(e) {
-                e.preventDefault();
-                loginOverlay.classList.add('active');
-            });
-        }
+        //depozit all funtion 
+        depozipt.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginOverlay.classList.add('active');
+        });
+        depoziptMobile.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginOverlay.classList.add('active');
+        });
 
         // Login overlay functionality
         loginButtons.forEach(button => {
