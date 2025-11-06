@@ -119,6 +119,45 @@
             flex: none;
         }
     }
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        height: 0;
+        overflow: hidden;
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        pointer-events: none; /* This allows clicks to pass through to our controls */
+    }
+    
+    /* Dynamic color transitions */
+    .color-transition {
+        transition: background 0.3s ease;
+    }
+    
+    /* Ensure our controls are above the YouTube iframe */
+    #playOverlay, #controlsBar, #loadingIndicator {
+        pointer-events: auto;
+        z-index: 14;
+    }
+    
+    /* Make sure the YouTube iframe is below our controls */
+    #youtubePlayer {
+        z-index: 10;
+        pointer-events: none;
+    }
+    
+    /* Make all control buttons clickable */
+    .control-button {
+        pointer-events: auto;
+        z-index: 15;
+    }
 </style>
 
 <body>
@@ -730,11 +769,11 @@
     </div>
     <!-- video play tech watch -->
      <div class=" flex items-center justify-center min-h-screen ">
-         <div class="relative w-full max-w-4xl">
+<div class="relative w-full max-w-4xl">
         <!-- Video Container -->
         <div class="relative bg-black rounded-lg overflow-hidden shadow-2xl">
             <!-- Red Header -->
-            <div class="absolute top-0 left-0 right-0 h-14 bg-red-500 z-50 flex items-center justify-between px-4">
+            <div class="absolute top-0 left-0 right-0 h-14 bg-red-500 z-15 flex items-center justify-between px-4">
                 <h1 class="text-white font-bold text-lg">Video Player</h1>
                 <button id="shareBtn" class="text-white hover:bg-red-600 p-2 rounded transition control-button">
                     <i class="fa-regular fa-share-from-square text-xl"></i>
@@ -747,7 +786,7 @@
             </div>
 
             <!-- Play Button Overlay -->
-            <div id="playOverlay" class="absolute inset-0 flex items-center justify-center bg-gray-200 bg-opacity-90 cursor-pointer transition-opacity duration-300 mt-14">
+            <div id="playOverlay" class="absolute inset-0 flex items-center justify-center   cursor-pointer transition-opacity duration-300 mt-14">
                 <button id="playButton" class="bg-red-500 hover:bg-red-600 rounded-full w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 flex items-center justify-center shadow-lg transform hover:scale-110 transition control-button">
                     <svg class="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"/>
@@ -756,7 +795,7 @@
             </div>
 
             <!-- Loading Indicator -->
-            <div id="loadingIndicator" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-40">
+            <div id="loadingIndicator" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-14">
                 <div class="w-12 h-12 md:w-16 md:h-16 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
             </div>
 

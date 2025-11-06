@@ -1,8 +1,9 @@
- // YouTube Player API
+// YouTube Player API
         let player;
         let isPlaying = false;
         let controlsTimeout;
         let progressInterval;
+        let lastVolume = 100; // Store last volume before mute
 
         // DOM Elements
         const playOverlay = document.getElementById('playOverlay');
@@ -202,6 +203,26 @@
             }
         };
 
+        // Fixed Volume Toggle Function
+        const toggleMute = () => {
+            if (!player) return;
+            
+            if (player.isMuted()) {
+                // Unmute and restore previous volume
+                player.unMute();
+                player.setVolume(lastVolume);
+                volumeSlider.value = lastVolume;
+                updateVolumeSliderColor();
+            } else {
+                // Mute and store current volume
+                lastVolume = player.getVolume();
+                player.mute();
+                volumeSlider.value = 0;
+                updateVolumeSliderColor();
+            }
+            updateVolumeIcon();
+        };
+
         // Event Handlers
         const togglePlay = () => {
             if (!player) return;
@@ -261,23 +282,16 @@
             updateProgressBarColor();
         };
 
-        const toggleMute = () => {
-            if (!player) return;
-            
-            if (player.isMuted()) {
-                player.unMute();
-            } else {
-                player.mute();
-            }
-            updateVolumeIcon();
-        };
-
         const adjustVolume = (e) => {
             if (!player) return;
             
             const volume = e.target.value;
             player.setVolume(volume);
-            player.unMute();
+            player.unMute(); // Ensure unmuted when adjusting volume
+            
+            // Store current volume for mute/unmute functionality
+            lastVolume = volume;
+            
             updateVolumeIcon();
             
             // Update volume slider color
@@ -372,6 +386,7 @@
                     const newVolume = Math.min(100, currentVolume + 10);
                     player.setVolume(newVolume);
                     volumeSlider.value = newVolume;
+                    lastVolume = newVolume;
                     updateVolumeIcon();
                     updateVolumeSliderColor();
                 },
@@ -381,6 +396,7 @@
                     const newVolume = Math.max(0, currentVolume - 10);
                     player.setVolume(newVolume);
                     volumeSlider.value = newVolume;
+                    lastVolume = newVolume;
                     updateVolumeIcon();
                     updateVolumeSliderColor();
                 }
