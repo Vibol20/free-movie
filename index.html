@@ -119,12 +119,12 @@
             flex: none;
         }
     }
-    
 </style>
 
 <body>
     <header id="header" class=" text-white opacity-100">
-    <div class="flex items-center justify-between px-4 py-2 bg-gray-900 shadow-2xl fixed top-0 left-0 right-0 z-20 w-full">
+        <div
+            class="flex items-center justify-between px-4 py-2 bg-gray-900 shadow-2xl fixed top-0 left-0 right-0 z-20 w-full">
             <!-- Logo Section -->
             <div class="flex-shrink-20">
                 <div class="logo ">
@@ -153,8 +153,7 @@
                     <ul class="flex space-x-4">
                         <!-- Top Up Menu Item -->
                         <li class="relative group mt-2">
-                            <a href="#"
-                                class="px-3 py-2 hover:text-blue-400 transition-colors " id="depozit">
+                            <a href="#" class="px-3 py-2 hover:text-blue-400 transition-colors " id="depozit">
                                 បញ្ចូលទឹកប្រាក់
                             </a>
                         </li>
@@ -406,8 +405,7 @@
         <div id="mobileMenu" class="mobile-menu lg:hidden bg-gray-800 fixed top-0 left-0 right-0 z-15 w-full pt-14">
             <nav class="container mx-auto px-4 py-4 overflow-y-auto max-h-[calc(100vh-10rem)]">
                 <ul class="space-y-2">
-                    <li><a href="#"
-                            class="block py-2 hover:text-yellow-400" id="depozitMobile" >បញ្ចូលទឹកប្រាក់</a></li>
+                    <li><a href="#" class="block py-2 hover:text-yellow-400" id="depozitMobile">បញ្ចូលទឹកប្រាក់</a></li>
                     <li>
                         <button class="w-full text-left py-2 hover:text-yellow-400 flex justify-between items-center"
                             onclick="toggleDropdown('info')">
@@ -558,7 +556,7 @@
                     </li>
                 </ul>
             </nav>
-        </header>
+    </header>
     <section>
         <!-- Login Form Overlay -->
         <div id="loginOverlay" class="login-overlay">
@@ -599,7 +597,7 @@
                                 class="forgot-password-link text-sm text-blue-400 hover:text-blue-300">ភ្លេចពាក្យសម្ងាត់?</a>
                         </div>
 
-                        <button  type="submit"
+                        <button type="submit"
                             class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800">
                             ចូល
                         </button>
@@ -707,8 +705,8 @@
                             </label>
                         </div>
 
-                        <button type="submit"
-                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800">
+                        <button id="register" type="submit" disabled
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed ">
                             ចុះឈ្មោះ
                         </button>
                     </form>
@@ -722,13 +720,22 @@
             </div>
         </div>
     </section>
-   <section class="container mx-auto px-4 py-8 pt-30">
-    <div>
-    <h4 class="text-xl text-black">home page</h4>
-   </div>
-   </section>
+    <section class="container mx-auto px-4 py-8 pt-30">
+        <div>
+            <h4 class="text-xl text-black">home page</h4>
+        </div>
+    </section>
 
 </body>
 <script src="scrip.js"></script>
+<script>
+    //check agree terms to enable register button
+    const registerButton = document.getElementById('register');
+    const agreeTerms = document.getElementById('agreeTerms');
+
+    agreeTerms.addEventListener('click', function () {
+        registerButton.disabled = !agreeTerms.checked;
+    });
+</script>
 
 </html>

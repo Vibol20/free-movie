@@ -119,12 +119,12 @@
             flex: none;
         }
     }
-    
 </style>
 
 <body>
     <header id="header" class=" text-white opacity-100">
-    <div class="flex items-center justify-between px-4 py-2 bg-gray-900 shadow-2xl fixed top-0 left-0 right-0 z-20 w-full">
+        <div
+            class="flex items-center justify-between px-4 py-2 bg-gray-900 shadow-2xl fixed top-0 left-0 right-0 z-20 w-full">
             <!-- Logo Section -->
             <div class="flex-shrink-20">
                 <div class="logo ">
@@ -153,8 +153,7 @@
                     <ul class="flex space-x-4">
                         <!-- Top Up Menu Item -->
                         <li class="relative group mt-2">
-                            <a href="#"
-                                class="px-3 py-2 hover:text-blue-400 transition-colors " id="depozit">
+                            <a href="#" class="px-3 py-2 hover:text-blue-400 transition-colors " id="depozit">
                                 បញ្ចូលទឹកប្រាក់
                             </a>
                         </li>
@@ -406,8 +405,7 @@
         <div id="mobileMenu" class="mobile-menu lg:hidden bg-gray-800 fixed top-0 left-0 right-0 z-15 w-full pt-14">
             <nav class="container mx-auto px-4 py-4 overflow-y-auto max-h-[calc(100vh-10rem)]">
                 <ul class="space-y-2">
-                    <li><a href="#"
-                            class="block py-2 hover:text-yellow-400" id="depozitMobile" >បញ្ចូលទឹកប្រាក់</a></li>
+                    <li><a href="#" class="block py-2 hover:text-yellow-400" id="depozitMobile">បញ្ចូលទឹកប្រាក់</a></li>
                     <li>
                         <button class="w-full text-left py-2 hover:text-yellow-400 flex justify-between items-center"
                             onclick="toggleDropdown('info')">
@@ -558,7 +556,7 @@
                     </li>
                 </ul>
             </nav>
-        </header>
+    </header>
     <section>
         <!-- Login Form Overlay -->
         <div id="loginOverlay" class="login-overlay">
@@ -599,7 +597,7 @@
                                 class="forgot-password-link text-sm text-blue-400 hover:text-blue-300">ភ្លេចពាក្យសម្ងាត់?</a>
                         </div>
 
-                        <button  type="submit"
+                        <button type="submit"
                             class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800">
                             ចូល
                         </button>
@@ -702,13 +700,13 @@
                             <input type="checkbox" id="agreeTerms" name="agreeTerms"
                                 class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-600 rounded bg-gray-700">
                             <label for="agreeTerms" class="ml-2 block text-sm text-gray-300">
-                                ខ្ញុំយល់ព្រមជាមួយ <a href="#"
+                                ខ្ញុំយល់ព្រមជាមួយ <a href="./Terms-of-service.html"
                                     class="text-blue-400 hover:text-blue-300">លក្ខខណ្ឌនៃសេវាកម្ម</a>
                             </label>
                         </div>
 
-                        <button type="submit"
-                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800">
+                        <button id="register" type="submit" disabled
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed ">
                             ចុះឈ្មោះ
                         </button>
                     </form>
@@ -722,7 +720,7 @@
             </div>
         </div>
     </section>
-       <!-- Main Content -->
+    <!-- Main Content -->
     <main class="container mx-auto px-4 py-8 pt-18">
         <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
             <!-- Page Header -->
@@ -734,15 +732,22 @@
             <!-- Content -->
             <div class="p-6 md:p-8">
                 <div class="mb-8">
-                    <p class="mb-4">សូមស្វាគមន៍មកកាន់ <span class="font-semibold text-indigo-600">FREE MOVIE</span>។ សូមអានលក្ខខណ្ឌនៃសេវាកម្ម ("លក្ខខណ្ឌ") នេះដោយប្រុងប្រយ័ត្នមុនពេលចាប់ផ្ដើមប្រើប្រាស់សេវាកម្មរបស់យើងខ្ញុំ។ ការចុះឈ្មោះ ចូលទស្សនា ឬប្រើប្រាស់គេហទំព័រនេះ បង្ហាញថាអ្នកបានយល់ព្រម និងទទួលយកនូវលក្ខខណ្ឌទាំងអស់ដែលមានចែងក្នុងទីនេះ។</p>
+                    <p class="mb-4">សូមស្វាគមន៍មកកាន់ <span class="font-semibold text-indigo-600">FREE MOVIE</span>។
+                        សូមអានលក្ខខណ្ឌនៃសេវាកម្ម ("លក្ខខណ្ឌ")
+                        នេះដោយប្រុងប្រយ័ត្នមុនពេលចាប់ផ្ដើមប្រើប្រាស់សេវាកម្មរបស់យើងខ្ញុំ។ ការចុះឈ្មោះ ចូលទស្សនា
+                        ឬប្រើប្រាស់គេហទំព័រនេះ បង្ហាញថាអ្នកបានយល់ព្រម និងទទួលយកនូវលក្ខខណ្ឌទាំងអស់ដែលមានចែងក្នុងទីនេះ។
+                    </p>
                 </div>
 
                 <!-- Section 1 -->
                 <div class="mb-8">
                     <h2 class="text-xl font-bold text-indigo-700 mb-4 border-b pb-2">១. ការទទួលខុសត្រូវចំពោះមាតិកា</h2>
                     <ul class="list-disc pl-5 space-y-2">
-                        <li>គេហទំព័រនេះដំណើរការជា "សេវាផ្សាយ" (Streaming Service) តាមអ៊ីនធឺណិតប៉ុណ្ណោះ។ យើងខ្ញុំ <span class="font-semibold">មិនមែន</span> ជាអ្នកបង្កើត ឬធ្វើការផលិតចម្លងច្បាប់ដើមនៃមាតិកាភាពយន្តទាំងអស់នោះទេ។</li>
-                        <li>មាតិកាទាំងអស់នៅលើគេហទំព័រនេះ (រួមទាំងភាពយន្ត, រូបភាព, អត្ថបទ, និងមាតិកាផ្សេងទៀត) គឺសម្រាប់គោលបំណងផ្សព្វផ្សាយ និងការត្រៀមលក្ខណ៍សិក្សាតែប៉ុណ្ណោះ។</li>
+                        <li>គេហទំព័រនេះដំណើរការជា "សេវាផ្សាយ" (Streaming Service) តាមអ៊ីនធឺណិតប៉ុណ្ណោះ។ យើងខ្ញុំ <span
+                                class="font-semibold">មិនមែន</span> ជាអ្នកបង្កើត
+                            ឬធ្វើការផលិតចម្លងច្បាប់ដើមនៃមាតិកាភាពយន្តទាំងអស់នោះទេ។</li>
+                        <li>មាតិកាទាំងអស់នៅលើគេហទំព័រនេះ (រួមទាំងភាពយន្ត, រូបភាព, អត្ថបទ, និងមាតិកាផ្សេងទៀត)
+                            គឺសម្រាប់គោលបំណងផ្សព្វផ្សាយ និងការត្រៀមលក្ខណ៍សិក្សាតែប៉ុណ្ណោះ។</li>
                         <li>យើងខ្ញុំមិនទទួលខុសត្រូវចំពោះមាតិកាណាមួយដែលបានបង្ហាញដោយភាគីទីបីនោះទេ។</li>
                     </ul>
                 </div>
@@ -771,9 +776,12 @@
                 <div class="mb-8">
                     <h2 class="text-xl font-bold text-indigo-700 mb-4 border-b pb-2">៤. កម្មសិទ្ធិបញ្ញា</h2>
                     <ul class="list-disc pl-5 space-y-2">
-                        <li>មាតិកាទាំងអស់នៅលើគេហទំព័រនេះ (រួមទាំងភាពយន្ត, រូបភាព, អត្ថបទ, និងមាតិកាផ្សេងទៀត) ត្រូវបានការពារដោយច្បាប់ស្ដីពីកម្មសិទ្ធិបញ្ញា។</li>
-                        <li>ការចម្លង ការបែងចែក ឬការប្រើប្រាស់ពុំមែនជាផ្លូវការណាមួយនៃមាតិកាទាំងនេះ ត្រូវបានហាមឃាត់ដោយច្បាប់។</li>
-                        <li>ប្រសិនបើអ្នកជាម្ចាស់កម្មសិទ្ធិបញ្ញា និងជឿថាមាតិការបស់អ្នកត្រូវបានប្រើប្រាស់ដោយគ្មានការអនុញ្ញាត សូមទាក់ទងមកយើងខ្ញុំភ្លាម។</li>
+                        <li>មាតិកាទាំងអស់នៅលើគេហទំព័រនេះ (រួមទាំងភាពយន្ត, រូបភាព, អត្ថបទ, និងមាតិកាផ្សេងទៀត)
+                            ត្រូវបានការពារដោយច្បាប់ស្ដីពីកម្មសិទ្ធិបញ្ញា។</li>
+                        <li>ការចម្លង ការបែងចែក ឬការប្រើប្រាស់ពុំមែនជាផ្លូវការណាមួយនៃមាតិកាទាំងនេះ
+                            ត្រូវបានហាមឃាត់ដោយច្បាប់។</li>
+                        <li>ប្រសិនបើអ្នកជាម្ចាស់កម្មសិទ្ធិបញ្ញា
+                            និងជឿថាមាតិការបស់អ្នកត្រូវបានប្រើប្រាស់ដោយគ្មានការអនុញ្ញាត សូមទាក់ទងមកយើងខ្ញុំភ្លាម។</li>
                     </ul>
                 </div>
 
@@ -791,7 +799,9 @@
                     <h2 class="text-xl font-bold text-indigo-700 mb-4 border-b pb-2">៦. ការផ្លាស់ប្តូរលក្ខខណ្ឌ</h2>
                     <ul class="list-disc pl-5 space-y-2">
                         <li>យើងខ្ញុំសិទ្ធិធ្វើការកែប្រែលក្ខខណ្ឌនៃសេវាកម្មនេះគ្រប់ពេលវេលា។</li>
-                        <li>ការកែប្រែនឹងត្រូវបានបង្ហាញនៅលើទំព័រនេះ ហើយការប្រើប្រាស់បន្តរបស់អ្នកបន្ទាប់ពីការផ្លាស់ប្តូរនឹងត្រូវចាត់ទុកថាជាការទទួលយកលក្ខខណ្ឌថ្មី។</li>
+                        <li>ការកែប្រែនឹងត្រូវបានបង្ហាញនៅលើទំព័រនេះ
+                            ហើយការប្រើប្រាស់បន្តរបស់អ្នកបន្ទាប់ពីការផ្លាស់ប្តូរនឹងត្រូវចាត់ទុកថាជាការទទួលយកលក្ខខណ្ឌថ្មី។
+                        </li>
                     </ul>
                 </div>
 
@@ -801,14 +811,20 @@
                     <p>ប្រសិនបើអ្នកមានសំណួរអំពីលក្ខខណ្ឌនៃសេវាកម្មទាំងនេះ សូមទាក់ទងមកយើងខ្ញុំតាមរយៈ៖</p>
                     <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="flex items-center">
-                            <svg class="w-5 h-5 text-indigo-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            <svg class="w-5 h-5 text-indigo-600 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
                             </svg>
                             <span>bolvi340@gmail.com</span>
                         </div>
                         <div class="flex items-center">
-                            <svg class="w-5 h-5 text-indigo-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            <svg class="w-5 h-5 text-indigo-600 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                </path>
                             </svg>
                             <span>+855 978 218 672</span>
                         </div>
@@ -819,12 +835,14 @@
                 <div class="bg-gray-100 p-6 rounded-lg mt-8">
                     <div class="flex items-start">
                         <input type="checkbox" id="agree" class="mt-1 mr-3">
-                        <label for="agree" class="text-gray-700">ខ្ញុំបានអាន យល់ព្រម និងទទួលយកនូវលក្ខខណ្ឌនៃសេវាកម្មទាំងអស់ដែលបានចែងខាងលើ។</label>
+                        <label for="agree" class="text-gray-700">ខ្ញុំបានអាន យល់ព្រម
+                            និងទទួលយកនូវលក្ខខណ្ឌនៃសេវាកម្មទាំងអស់ដែលបានចែងខាងលើ។</label>
                     </div>
                     <a href="./index.html">
-                        <button id="continueBtn" disabled class="w-full md:w-auto mt-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed ">
-                        បន្តទៅកាន់គេហទំព័រ
-                    </button>
+                        <button id="continueBtn" disabled
+                            class="w-full md:w-auto mt-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed ">
+                            បន្តទៅកាន់គេហទំព័រ
+                        </button>
                     </a>
                 </div>
             </div>
@@ -833,21 +851,28 @@
 
 </body>
 <script src="scrip.js"></script>
- <script>
+<script>
+    const registerButton = document.getElementById('register');
+    const agreeTerms = document.getElementById('agreeTerms');
     const continueBtn = document.getElementById('continueBtn');
     const Checkbox = document.getElementById('agree');
-        // Enable continue button when checkbox is checked
-        Checkbox.addEventListener('change', function() {
-            continueBtn.disabled = !this.checked;
-        });
+    // Enable continue button when checkbox is checked
+    Checkbox.addEventListener('change', function () {
+        continueBtn.disabled = !this.checked;
+    });
 
-        // Continue button functionality
-        continueBtn.addEventListener('click', function() {
-            if (!this.disabled) {
-                alert('អ្នកបានទទួលយកលក្ខខណ្ឌនៃសេវាកម្មដោយជោគជ័យ!');
-                // In a real application, you would redirect to the main site
-                // window.location.href = '/';
-            }
-        });
-    </script>
+    // Continue button functionality
+    continueBtn.addEventListener('click', function () {
+        if (!this.disabled) {
+            alert('អ្នកបានទទួលយកលក្ខខណ្ឌនៃសេវាកម្មដោយជោគជ័យ!');
+            // In a real application, you would redirect to the main site
+            // window.location.href = '/';
+        }
+    });
+    //checkbox for register button
+    agreeTerms.addEventListener('click', function () {
+        registerButton.disabled = !agreeTerms.checked;
+    });
+</script>
+
 </html>

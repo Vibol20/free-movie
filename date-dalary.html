@@ -701,13 +701,13 @@
                             <input type="checkbox" id="agreeTerms" name="agreeTerms"
                                 class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-600 rounded bg-gray-700">
                             <label for="agreeTerms" class="ml-2 block text-sm text-gray-300">
-                                ខ្ញុំយល់ព្រមជាមួយ <a href="#"
+                                ខ្ញុំយល់ព្រមជាមួយ <a href="./Terms-of-service.html"
                                     class="text-blue-400 hover:text-blue-300">លក្ខខណ្ឌនៃសេវាកម្ម</a>
                             </label>
                         </div>
 
-                        <button type="submit"
-                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800">
+                        <button id="register" type="submit" disabled
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed ">
                             ចុះឈ្មោះ
                         </button>
                     </form>
@@ -764,5 +764,13 @@
 
 </body>
 <script src="scrip.js"></script>
+<script>
+     //check agree terms to enable register button
+    const registerButton = document.getElementById('register');
+    const agreeTerms = document.getElementById('agreeTerms');
 
+    agreeTerms.addEventListener('click', function () {
+        registerButton.disabled = !agreeTerms.checked;
+    });
+</script>
 </html>

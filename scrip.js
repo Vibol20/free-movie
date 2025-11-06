@@ -16,6 +16,7 @@
         const backToLoginLinks = document.querySelectorAll('.back-to-login-link');
         const depozipt = document.getElementById('depozit');
         const depoziptMobile = document.getElementById('depozitMobile');
+        
         // Mobile menu toggle
         mobileMenuBtn.addEventListener('click', function() {
             mobileMenu.classList.toggle('active');
@@ -74,6 +75,7 @@
             signupOverlay.classList.remove('active');
         });
 
+        
         // Back to login functionality
         backToLoginLinks.forEach(link => {
             link.addEventListener('click', function(e) {
