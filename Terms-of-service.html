@@ -834,13 +834,15 @@
 </body>
 <script src="scrip.js"></script>
  <script>
+    const continueBtn = document.getElementById('continueBtn');
+    const Checkbox = document.getElementById('agree');
         // Enable continue button when checkbox is checked
-        document.getElementById('agree').addEventListener('change', function() {
-            document.getElementById('continueBtn').disabled = !this.checked;
+        Checkbox.addEventListener('change', function() {
+            continueBtn.disabled = !this.checked;
         });
 
         // Continue button functionality
-        document.getElementById('continueBtn').addEventListener('click', function() {
+        continueBtn.addEventListener('click', function() {
             if (!this.disabled) {
                 alert('អ្នកបានទទួលយកលក្ខខណ្ឌនៃសេវាកម្មដោយជោគជ័យ!');
                 // In a real application, you would redirect to the main site
