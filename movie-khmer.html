@@ -119,50 +119,6 @@
             flex: none;
         }
     }
-
-    .video-container {
-        position: relative;
-        padding-bottom: 56.25%;
-        /* 16:9 Aspect Ratio */
-        height: 0;
-        overflow: hidden;
-    }
-
-    .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-        pointer-events: none;
-        /* This allows clicks to pass through to our controls */
-    }
-
-    /* Dynamic color transitions */
-    .color-transition {
-        transition: background 0.3s ease;
-    }
-
-    /* Ensure our controls are above the YouTube iframe */
-    #playOverlay,
-    #controlsBar,
-    #loadingIndicator {
-        pointer-events: auto;
-        z-index: 14;
-    }
-
-    /* Make sure the YouTube iframe is below our controls */
-    #youtubePlayer {
-        z-index: 10;
-        pointer-events: none;
-    }
-
-    /* Make all control buttons clickable */
-    .control-button {
-        pointer-events: auto;
-        z-index: 15;
-    }
 </style>
 
 <body>
@@ -220,15 +176,15 @@
                                         class="block px-4 py-2 hover:bg-gray-700">ចម្ងល់ឬបញ្ហាផ្សេងៗ​</a></li>
                                 <li><a href="./tech-wath.html" class="block px-4 py-2 hover:bg-gray-700">របៀបទស្សនា</a>
                                 </li>
-                                <li><a href="./tech-wath.html"
-                                        class="block px-4 py-2 hover:bg-gray-700">របៀប loging និង បង្កើត Account</a>
+                                <li><a href="./tech-wath.html" class="block px-4 py-2 hover:bg-gray-700">របៀប loging និង
+                                        បង្កើត Account</a>
                                 </li>
                                 <li><a href="./tech-wath.html"
                                         class="block px-4 py-2 hover:bg-gray-700">របៀបប្រើប្រាស់វេបសាយ</a></li>
                                 <li><a href="./tech-wath.html"
                                         class="block px-4 py-2 hover:bg-gray-700">របៀបបញ្ចូលទឹកប្រាក់</a></li>
-                                <li><a href="./tech-wath.html"
-                                        class="block px-4 py-2 hover:bg-gray-700">របៀបទិញរឿង</a></li>
+                                <li><a href="./tech-wath.html" class="block px-4 py-2 hover:bg-gray-700">របៀបទិញរឿង</a>
+                                </li>
                                 <li><a href="./tech-sarh.html"
                                         class="block px-4 py-2 hover:bg-gray-700">របៀបស្វែងរករឿង</a></li>
                             </ul>
@@ -446,7 +402,7 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobileMenu" class="mobile-menu lg:hidden bg-gray-800 fixed top-0 left-0 right-0 z-18 w-full pt-14">
+        <div id="mobileMenu" class="mobile-menu lg:hidden bg-gray-800 fixed top-0 left-0 right-0 z-15 w-full pt-14">
             <nav class="container mx-auto px-4 py-4 overflow-y-auto max-h-[calc(100vh-10rem)]">
                 <ul class="space-y-2">
                     <li><a href="#" class="block py-2 hover:text-yellow-400" id="depozitMobile">បញ្ចូលទឹកប្រាក់</a></li>
@@ -462,16 +418,12 @@
                             <a href="https://t.me/pai_vibol"
                                 class="block py-2 hover:text-yellow-400">ចម្ងល់ឬបញ្ហាផ្សេងៗ​</a>
                             <a href="./tech-wath.html" class="block py-2 hover:text-yellow-400">របៀបទស្សនា</a>
-                            <a href="./tech-wath.html"
-                                class="block py-2 hover:text-yellow-400">របៀប loging និង បង្កើត Account</a>
-                            <a href="./tech-wath.html"
-                                class="block py-2 hover:text-yellow-400">របៀបប្រើប្រាស់វេបសាយ</a>
-                            <a href="./tech-wath.html"
-                                class="block py-2 hover:text-yellow-400">របៀបបញ្ចូលទឹកប្រាក់</a>
-                            <a href="./tech-wath.html"
-                                class="block py-2 hover:text-yellow-400">របៀបទិញរឿង</a>
-                            <a href="./tech-sarh.html"
-                                class="block py-2 hover:text-yellow-400">របៀបស្វែងរករឿង</a>
+                            <a href="./tech-wath.html" class="block py-2 hover:text-yellow-400">របៀប loging និង បង្កើត
+                                Account</a>
+                            <a href="./tech-wath.html" class="block py-2 hover:text-yellow-400">របៀបប្រើប្រាស់វេបសាយ</a>
+                            <a href="./tech-wath.html" class="block py-2 hover:text-yellow-400">របៀបបញ្ចូលទឹកប្រាក់</a>
+                            <a href="./tech-wath.html" class="block py-2 hover:text-yellow-400">របៀបទិញរឿង</a>
+                            <a href="./tech-sarh.html" class="block py-2 hover:text-yellow-400">របៀបស្វែងរករឿង</a>
                         </div>
                     </li>
                     <li>
@@ -763,205 +715,92 @@
             </div>
         </div>
     </section>
-    <section class="px-3 xs:px-4 sm:px-6 py-3 sm:py-4 pt-4 sm:pt-6 md:pt-8 bg-gray-800">
-        <!-- Header -->
-        <div class="py-2 border-b-2 border-gray-400">
-            <h3
-                class="text-white text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center md:text-left font-medium pt-14">
-                របៀបប្រើប្រាស់វេបសាយ
-            </h3>
-        </div>
-        <div class="flex flex-col items-center justify-center w-full py-8">
-            <h2 class="text-gray-300 text-md sm:text-xl md:text-2xl lg:text-3xl text-center font-medium mb-4">
-                សូមទស្សនា Video ដូចតទៅនេះពីចាប់ផ្ដើមដល់បញ្ចប់
-            </h2>
-
-            <div class="w-full max-w-2xl space-y-4">
-                <div class="flex items-center ">
-                    <span class="text-gray-300 font-bold text-lg ml-18">ជំហ៊ានទី 1 :</span>
-                    <span class="text-yellow-400 text-lg font-bold">បង្កើត Account</span>
-                </div>
-
-                <div class="flex items-center">
-                    <span class="text-gray-300 font-bold text-lg ml-24">ជំហ៊ានទី 2 :</span>
-                    <span class="text-yellow-400 font-bold text-lg">បញ្ចូលទឹកប្រាក់</span>
-                </div>
-
-                <div class="flex items-center">
-                    <span class="text-gray-300 font-bold text-lg ml-30">ជំហ៊ានទី 3 :</span>
-                    <span class="text-yellow-400 font-bold text-lg">ទិញរឿង</span>
-                </div>
-            </div>
-        </div>
-        <!-- video play tech watch -->
-        <div class=" flex items-center justify-center pb-30 ">
-            <div class="relative w-full max-w-4xl">
-                <!-- Video Container -->
-                <div class="relative bg-black rounded-lg overflow-hidden shadow-2xl">
-                    <!-- Red Header -->
-                    <div
-                        class="absolute top-0 left-0 right-0 h-14 bg-red-500 z-15 flex items-center justify-between px-4">
-                        <h1 class="text-white font-bold text-lg">Video Player</h1>
-                        <button id="shareBtn" class="text-white hover:bg-red-600 p-2 rounded transition control-button">
-                            <i class="fa-regular fa-share-from-square text-xl"></i>
-                        </button>
+    <section>
+        <div class="relative overflow-hidden bg-gray-800 mt-8 py-10 md:py-14 lg:py-16 xl:py-20">
+            <div class="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
+                <div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
+                    <div class="sm:max-w-lg">
+                        <!-- Fixed: Changed text color for better contrast on dark background -->
+                        <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Khmer-speaking movies are here.</h1>
+                        <p class="mt-4 text-xl text-gray-300">Please enjoy watching with our website which brings a variety of famous movies.</p>
                     </div>
-
-                    <!-- Video Element -->
-                    <div class="video-container w-full aspect-video mt-14">
-                        <div id="youtubePlayer"></div>
-                    </div>
-
-                    <!-- Play Button Overlay -->
-                    <div id="playOverlay"
-                        class="absolute inset-0 flex items-center justify-center   cursor-pointer transition-opacity duration-300 mt-14">
-                        <button id="playButton"
-                            class="bg-red-500 hover:bg-red-600 rounded-full w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 flex items-center justify-center shadow-lg transform hover:scale-110 transition control-button">
-                            <svg class="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-white ml-1" fill="currentColor"
-                                viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z" />
-                            </svg>
-                        </button>
-                    </div>
-
-                    <!-- Loading Indicator -->
-                    <div id="loadingIndicator"
-                        class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-14">
-                        <div
-                            class="w-12 h-12 md:w-16 md:h-16 border-4 border-red-500 border-t-transparent rounded-full animate-spin">
-                        </div>
-                    </div>
-
-                    <!-- Custom Video Controls -->
-                    <div id="controlsBar"
-                        class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 z-40">
-                        <!-- Progress Bar -->
-                        <div class="px-2 md:px-4 pt-2">
-                            <input type="range" id="progressBar" class="w-full h-1 color-transition control-button"
-                                value="0" min="0" max="100" step="0.1">
-                        </div>
-
-                        <div class="flex items-center gap-1 md:gap-2 px-2 md:px-4 py-2 md:py-3 text-white">
-                            <!-- Play/Pause Button -->
-                            <button id="playPauseBtn"
-                                class="hover:bg-white hover:bg-opacity-20 p-1 md:p-2 rounded transition control-button">
-                                <svg id="playIcon" class="w-5 h-5 md:w-6 md:h-6" fill="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path d="M8 5v14l11-7z" />
-                                </svg>
-                                <svg id="pauseIcon" class="w-5 h-5 md:w-6 md:h-6 hidden" fill="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
-                                </svg>
-                            </button>
-
-                            <!-- Volume Controls -->
-                            <div class="flex items-center gap-1 md:gap-2">
-                                <button id="volumeBtn"
-                                    class="hover:bg-white hover:bg-opacity-20 p-1 md:p-2 rounded transition control-button">
-                                    <svg id="volumeIcon" class="w-5 h-5 md:w-6 md:h-6" fill="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path
-                                            d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
-                                    </svg>
-                                    <svg id="mutedIcon" class="w-5 h-5 md:w-6 md:h-6 hidden" fill="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path
-                                            d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
-                                    </svg>
-                                </button>
-                                <input type="range" id="volumeSlider"
-                                    class="w-16 md:w-20 h-1 color-transition control-button" value="100" min="0"
-                                    max="100">
-                            </div>
-
-                            <!-- Time Display - Fixed Format -->
-                            <div class="text-xs md:text-sm px-1 md:px-2 font-mono">
-                                <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
-                            </div>
-
-                            <!-- Spacer -->
-                            <div class="flex-1"></div>
-
-                            <!-- Playback Speed -->
-                            <div class="relative">
-                                <button id="speedBtn"
-                                    class="hover:bg-white hover:bg-opacity-20 px-2 md:px-3 py-1 md:py-2 rounded transition text-xs md:text-sm font-medium control-button">
-                                    1x
-                                </button>
-                                <div id="speedMenu"
-                                    class="absolute bottom-full mb-2 right-0 bg-gray-800 rounded-lg shadow-lg hidden flex-col overflow-hidden z-50">
-                                    <button
-                                        class="speed-option px-3 py-1 md:px-4 md:py-2 hover:bg-gray-700 transition text-xs md:text-sm control-button"
-                                        data-speed="0.25">0.25x</button>
-                                    <button
-                                        class="speed-option px-3 py-1 md:px-4 md:py-2 hover:bg-gray-700 transition text-xs md:text-sm control-button"
-                                        data-speed="0.5">0.5x</button>
-                                    <button
-                                        class="speed-option px-3 py-1 md:px-4 md:py-2 hover:bg-gray-700 transition text-xs md:text-sm control-button"
-                                        data-speed="0.75">0.75x</button>
-                                    <button
-                                        class="speed-option px-3 py-1 md:px-4 md:py-2 hover:bg-gray-700 transition text-xs md:text-sm bg-gray-700 control-button"
-                                        data-speed="1">1x</button>
-                                    <button
-                                        class="speed-option px-3 py-1 md:px-4 md:py-2 hover:bg-gray-700 transition text-xs md:text-sm control-button"
-                                        data-speed="1.25">1.25x</button>
-                                    <button
-                                        class="speed-option px-3 py-1 md:px-4 md:py-2 hover:bg-gray-700 transition text-xs md:text-sm control-button"
-                                        data-speed="1.5">1.5x</button>
-                                    <button
-                                        class="speed-option px-3 py-1 md:px-4 md:py-2 hover:bg-gray-700 transition text-xs md:text-sm control-button"
-                                        data-speed="2">2x</button>
+                    <div>
+                        <div class="mt-10">
+                            <!-- Decorative image grid -->
+                            <div aria-hidden="true"
+                                class="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl">
+                                <div
+                                    class="absolute transform sm:top-0 sm:left-1/2 sm:translate-x-8 lg:top-1/2 lg:left-1/2 lg:translate-x-8 lg:-translate-y-1/2">
+                                    <div class="flex items-center space-x-6 lg:space-x-8">
+                                        <div class="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                                            <div
+                                                class="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
+                                                <!-- Fixed: Added descriptive alt text -->
+                                                <img src="https://khdiamond.net/wp-content/uploads/2024/07/photo_2024-07-28_08-50-16.jpg"
+                                                    alt="Summer collection item 1" class="size-full object-cover object-center" />
+                                            </div>
+                                            <div class="h-64 w-44 overflow-hidden rounded-lg">
+                                                <img src="https://khdiamond.net/wp-content/uploads/2024/10/poster-sq-.jpg"
+                                                    alt="Summer collection item 2" class="size-full object-cover object-center" />
+                                            </div>
+                                        </div>
+                                        <div class="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                                            <div class="h-64 w-44 overflow-hidden rounded-lg">
+                                                <img src="https://khdiamond.net/wp-content/uploads/2025/10/A3-scaled.jpg"
+                                                    alt="Summer collection item 3" class="size-full object-cover object-center" />
+                                            </div>
+                                            <div class="h-64 w-44 overflow-hidden rounded-lg">
+                                                <img src="https://khdiamond.net/wp-content/uploads/2024/08/poster-web-1-scaled.jpg"
+                                                    alt="Summer collection item 4" class="size-full object-cover object-center" />
+                                            </div>
+                                            <div class="h-64 w-44 overflow-hidden rounded-lg">
+                                                <img src="https://khdiamond.net/wp-content/uploads/2025/09/Poster-1-4.jpg"
+                                                    alt="Summer collection item 5" class="size-full object-cover object-center" />
+                                            </div>
+                                        </div>
+                                        <div class="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                                            <div class="h-64 w-44 overflow-hidden rounded-lg">
+                                                <img src="https://khdiamond.net/wp-content/uploads/2024/07/POSTER-1-2-scaled.jpg"
+                                                    alt="Summer collection item 6" class="size-full object-cover object-center" />
+                                            </div>
+                                            <div class="h-64 w-44 overflow-hidden rounded-lg">
+                                                <img src="https://khdiamond.net/wp-content/uploads/2025/04/Poster-1-scaled.jpg"
+                                                    alt="Summer collection item 7" class="size-full object-cover object-center" />
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Settings -->
-                            <button id="settingsBtn"
-                                class="hover:bg-white hover:bg-opacity-20 p-1 md:p-2 rounded transition control-button">
-                                <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
-                                    </path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                </svg>
-                            </button>
-
-                            <!-- Picture in Picture -->
-                            <button id="pipBtn"
-                                class="hover:bg-white hover:bg-opacity-20 p-1 md:p-2 rounded transition control-button">
-                                <svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M19 7h-8v6h8V7zm2-4H3c-1.1 0-2 .9-2 2v14c0 1.1.9 1.98 2 1.98h18c1.1 0 2-.88 2-1.98V5c0-1.1-.9-2-2-2zm0 16.01H3V4.98h18v14.03z" />
-                                </svg>
-                            </button>
-
-                            <!-- Fullscreen Button -->
-                            <button id="fullscreenBtn"
-                                class="hover:bg-white hover:bg-opacity-20 p-1 md:p-2 rounded transition control-button">
-                                <svg id="fullscreenIcon" class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-                                </svg>
-                                <svg id="exitFullscreenIcon" class="w-5 h-5 md:w-6 md:h-6 hidden" fill="none"
-                                    stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 9V4.5M9 9H4.5M9 9L3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5l5.25 5.25" />
-                                </svg>
-                            </button>
+                            <a href="#" class="rounded-md border border-gray-300 px-8 py-3 text-center font-medium text-white hover:bg-white hover:text-gray-900 transition-all duration-300 inline-flex items-center justify-center">
+                                <span>Watch Now</span>
+                                <i class="fas fa-images ml-2"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-
+        </div>
+    </section>
+    <section class="bg-gray-800 py-10 md:py-14 lg:py-16 xl:py-20">
+        <div class="flex items-center justify-center px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24">
+            <div
+                class="flex-grow h-px bg-gray-700 max-w-[60px] sm:max-w-[120px] md:max-w-[200px] lg:max-w-[300px] xl:max-w-[400px]">
+            </div>
+            <h2
+                class="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold mx-3 sm:mx-4 md:mx-6 text-center tracking-wide">
+                និយាយខ្មែរ
+            </h2>
+            <div
+                class="flex-grow h-px bg-gray-700 max-w-[60px] sm:max-w-[120px] md:max-w-[200px] lg:max-w-[300px] xl:max-w-[400px]">
+            </div>
         </div>
     </section>
 
+
+
 </body>
 <script src="scrip.js"></script>
-<script src="text-video.js"></script>
 <script>
     //check agree terms to enable register button
     const registerButton = document.getElementById('register');
