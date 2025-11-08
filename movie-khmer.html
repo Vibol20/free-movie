@@ -369,15 +369,48 @@
             <div class="hidden md:flex items-center space-x-4">
                 <!-- Search Form -->
                 <div class="search relative">
-                    <form method="get" id="searchform" action="https://khdiamond.net" class="flex items-center">
-                        <input type="text" placeholder="Search..." name="s" id="s" value="" autocomplete="off"
+                    <form method="get" id="searchform" action="#" class="flex items-center">
+                        <input type="text" placeholder="Search..." name="s" id="search" value="" autocomplete="off"
                             class="px-3 py-1 bg-gray-800 rounded-l-md border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         <button type="submit"
                             class="px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded-r-md border border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <i class="fas fa-search pt-1"></i>
                         </button>
                     </form>
+
+                    <!-- Filterable List -->
+                    <ul id="list"
+                        class="divide-y divide-gray-700 rounded-md bg-gray-700 hidden absolute top-full left-0 right-0 z-10 max-h-60 overflow-y-auto">
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">និយាយខ្មែរ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">អក្សរខ្មែរ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ឥតគិតថ្លៃ Free</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">គិតតម្លៃ Paid</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ភាគ អឺរ៉ុប</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ភាគកូរ៉េ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ភាគ Anime</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Anime</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង​ ភាគល្បីៗ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Horror</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Drama</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Thriller</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី១</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី២</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី៣</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី៤</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី៥</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី៦</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង​ ស្រឡាញ់គេម្នាក់អែង</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង ជប៉ុន</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង បែបបច្ចេកវីទ្យា</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង ​ស្នេហា</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង​ ខ្មោច</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">របៀបបញ្ចូលទឹកប្រាក់</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿងក្តីខ្មោចកំបុតក្បាល</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង បែបសាហាវ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">movie khmer</li>
+                    </ul>
                 </div>
+
 
                 <!-- User Icon -->
                 <div class="dtuser">
@@ -399,6 +432,7 @@
                     <i class="fas fa-search"></i>
                 </button>
             </form>
+            
         </div>
 
         <!-- Mobile Menu -->
@@ -793,147 +827,149 @@
     </section>
     <section class="bg-gray-800 py-10 md:py-12 lg:py-14 xl:py-16">
         <div class="flex items-center justify-center px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24">
-            <div class="flex-grow h-px bg-gray-700 max-w-[60px] sm:max-w-[120px] md:max-w-[200px] lg:max-w-[300px] xl:max-w-[400px]"></div>
-            <h2 class="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold mx-3 sm:mx-4 md:mx-6 text-center tracking-wide">
+            <div
+                class="flex-grow h-px bg-gray-700 max-w-[60px] sm:max-w-[120px] md:max-w-[200px] lg:max-w-[300px] xl:max-w-[400px]">
+            </div>
+            <h2
+                class="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold mx-3 sm:mx-4 md:mx-6 text-center tracking-wide">
                 និយាយខ្មែរ
             </h2>
-            <div class="flex-grow h-px bg-gray-700 max-w-[60px] sm:max-w-[120px] md:max-w-[200px] lg:max-w-[300px] xl:max-w-[400px]"></div>
+            <div
+                class="flex-grow h-px bg-gray-700 max-w-[60px] sm:max-w-[120px] md:max-w-[200px] lg:max-w-[300px] xl:max-w-[400px]">
+            </div>
         </div>
     </section>
 
     <!-- Products Section -->
-<section class="bg-gray-800 pb-16">
-    <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-        <h2 class="text-2xl font-bold tracking-tight text-white">Recently added</h2>
+    <section class="bg-gray-800 pb-16">
+        <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+            <h2 class="text-2xl font-bold tracking-tight text-white">Recently added</h2>
 
-        <div class="mt-6 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-6 lg:gap-x-8">
-            <!-- Product 1 -->
-            <div class="group relative">
-                <div class="h-64 w-44 mx-auto overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
-                    <img src="https://khdiamond.net/wp-content/uploads/2025/11/resized_w480_Poster-3.jpg"
-                        alt="Front of men's Basic Tee in black."
-                        class="h-full w-full object-cover object-center" />
-                </div>
-                <div class="mt-4 flex justify-between w-44 mx-auto">
-                    <div>
-                        <h3 class="text-sm text-white">
-                            <a href="#">
-                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                ពិធីរំដោះវិញ្ញាណសព
-                            </a>
-                        </h3>
-                        <p class="mt-1 text-sm text-white">Nov. 09, 2024</p>
+            <div class="mt-6 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-6 lg:gap-x-8">
+                <!-- Product 1 -->
+                <div class="group relative">
+                    <div class="h-64 w-44 mx-auto overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
+                        <img src="https://khdiamond.net/wp-content/uploads/2025/11/resized_w480_Poster-3.jpg"
+                            alt="Front of men's Basic Tee in black." class="h-full w-full object-cover object-center" />
                     </div>
-                    <p class="text-sm font-medium text-yellow-500">3.5 <i class="fa-solid fa-star"></i></p>
+                    <div class="mt-4 flex justify-between w-44 mx-auto">
+                        <div>
+                            <h3 class="text-sm text-white">
+                                <a href="#">
+                                    <span aria-hidden="true" class="absolute inset-0"></span>
+                                    ពិធីរំដោះវិញ្ញាណសព
+                                </a>
+                            </h3>
+                            <p class="mt-1 text-sm text-white">Nov. 09, 2024</p>
+                        </div>
+                        <p class="text-sm font-medium text-yellow-500">3.5 <i class="fa-solid fa-star"></i></p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Product 2 -->
-            <div class="group relative">
-                <div class="h-64 w-44 mx-auto overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
-                    <img src="https://khdiamond.net/wp-content/uploads/2025/11/resized_w480_Poster2-1-scaled.jpg"
-                        alt="Front of men's Basic Tee in white."
-                        class="h-full w-full object-cover object-center" />
-                </div>
-                <div class="mt-4 flex justify-between w-44 mx-auto">
-                    <div>
-                        <h3 class="text-sm text-white">
-                            <a href="#">
-                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                ក្តីស្រមៃឪពុក កិត្តិយសជាតិ
-                            </a>
-                        </h3>
-                        <p class="mt-1 text-sm text-white">Dec. 21, 2016</p>
+                <!-- Product 2 -->
+                <div class="group relative">
+                    <div class="h-64 w-44 mx-auto overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
+                        <img src="https://khdiamond.net/wp-content/uploads/2025/11/resized_w480_Poster2-1-scaled.jpg"
+                            alt="Front of men's Basic Tee in white." class="h-full w-full object-cover object-center" />
                     </div>
-                    <p class="text-sm font-medium text-yellow-500">9 <i class="fa-solid fa-star"></i></p>
+                    <div class="mt-4 flex justify-between w-44 mx-auto">
+                        <div>
+                            <h3 class="text-sm text-white">
+                                <a href="#">
+                                    <span aria-hidden="true" class="absolute inset-0"></span>
+                                    ក្តីស្រមៃឪពុក កិត្តិយសជាតិ
+                                </a>
+                            </h3>
+                            <p class="mt-1 text-sm text-white">Dec. 21, 2016</p>
+                        </div>
+                        <p class="text-sm font-medium text-yellow-500">9 <i class="fa-solid fa-star"></i></p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Product 3 -->
-            <div class="group relative">
-                <div class="h-64 w-44 mx-auto overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
-                    <img src="https://khdiamond.net/wp-content/uploads/2025/11/resized_w480_Poster2-2-scaled.jpg"
-                        alt="Front of men's Basic Tee in dark gray."
-                        class="h-full w-full object-cover object-center" />
-                </div>
-                <div class="mt-4 flex justify-between w-44 mx-auto">
-                    <div>
-                        <h3 class="text-sm text-white">
-                            <a href="#">
-                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                ក្រុមចោរអស់លក្ខណ៍វគ្គ2
-                            </a>
-                        </h3>
-                        <p class="mt-1 text-sm text-white">Jul. 24, 2025</p>
+                <!-- Product 3 -->
+                <div class="group relative">
+                    <div class="h-64 w-44 mx-auto overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
+                        <img src="https://khdiamond.net/wp-content/uploads/2025/11/resized_w480_Poster2-2-scaled.jpg"
+                            alt="Front of men's Basic Tee in dark gray."
+                            class="h-full w-full object-cover object-center" />
                     </div>
-                    <p class="text-sm font-medium text-yellow-500">4.5 <i class="fa-solid fa-star"></i></p>
+                    <div class="mt-4 flex justify-between w-44 mx-auto">
+                        <div>
+                            <h3 class="text-sm text-white">
+                                <a href="#">
+                                    <span aria-hidden="true" class="absolute inset-0"></span>
+                                    ក្រុមចោរអស់លក្ខណ៍វគ្គ2
+                                </a>
+                            </h3>
+                            <p class="mt-1 text-sm text-white">Jul. 24, 2025</p>
+                        </div>
+                        <p class="text-sm font-medium text-yellow-500">4.5 <i class="fa-solid fa-star"></i></p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Product 4 -->
-            <div class="group relative">
-                <div class="h-64 w-44 mx-auto overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
-                    <img src="https://khdiamond.net/wp-content/uploads/2025/11/resized_w480_Poster.jpg"
-                        alt="Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube."
-                        class="h-full w-full object-cover object-center" />
-                </div>
-                <div class="mt-4 flex justify-between w-44 mx-auto">
-                    <div>
-                        <h3 class="text-sm text-white">
-                            <a href="#">
-                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                រឿងក្តីខ្មោចកំបុតក្បាល
-                            </a>
-                        </h3>
-                        <p class="mt-1 text-sm text-white">Apr. 25, 2025</p>
+                <!-- Product 4 -->
+                <div class="group relative">
+                    <div class="h-64 w-44 mx-auto overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
+                        <img src="https://khdiamond.net/wp-content/uploads/2025/11/resized_w480_Poster.jpg"
+                            alt="Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube."
+                            class="h-full w-full object-cover object-center" />
                     </div>
-                    <p class="text-sm font-medium text-yellow-500">8.5 <i class="fa-solid fa-star"></i></p>
-                </div>
-            </div>
-            <!-- Product 4 -->
-            <div class="group relative">
-                <div class="h-64 w-44 mx-auto overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
-                    <img src="https://khdiamond.net/wp-content/uploads/2025/11/resized_w480_Poster-1.jpg"
-                        alt="Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube."
-                        class="h-full w-full object-cover object-center" />
-                </div>
-                <div class="mt-4 flex justify-between w-44 mx-auto">
-                    <div>
-                        <h3 class="text-sm text-white">
-                            <a href="#">
-                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                ល្បែងផ្គុំរូប
-                            </a>
-                        </h3>
-                        <p class="mt-1 text-sm text-white">May. 21, 2025</p>
+                    <div class="mt-4 flex justify-between w-44 mx-auto">
+                        <div>
+                            <h3 class="text-sm text-white">
+                                <a href="#">
+                                    <span aria-hidden="true" class="absolute inset-0"></span>
+                                    រឿងក្តីខ្មោចកំបុតក្បាល
+                                </a>
+                            </h3>
+                            <p class="mt-1 text-sm text-white">Apr. 25, 2025</p>
+                        </div>
+                        <p class="text-sm font-medium text-yellow-500">8.5 <i class="fa-solid fa-star"></i></p>
                     </div>
-                    <p class="text-sm font-medium text-yellow-500">9.5 <i class="fa-solid fa-star"></i></p>
                 </div>
-            </div>
-            <!-- Product 4 -->
-            <div class="group relative">
-                <div class="h-64 w-44 mx-auto overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
-                    <img src="https://khdiamond.net/wp-content/uploads/2025/10/resized_w480_Poster3-3-scaled.jpg"
-                        alt="Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube."
-                        class="h-full w-full object-cover object-center" />
-                </div>
-                <div class="mt-4 flex justify-between w-44 mx-auto">
-                    <div>
-                        <h3 class="text-sm text-white">
-                            <a href="#">
-                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                បិសាចចុងក្រោយ
-                            </a>
-                        </h3>
-                        <p class="mt-1 text-sm text-white">Sep. 03, 2025</p>
+                <!-- Product 4 -->
+                <div class="group relative">
+                    <div class="h-64 w-44 mx-auto overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
+                        <img src="https://khdiamond.net/wp-content/uploads/2025/11/resized_w480_Poster-1.jpg"
+                            alt="Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube."
+                            class="h-full w-full object-cover object-center" />
                     </div>
-                    <p class="text-sm font-medium text-yellow-500">10 <i class="fa-solid fa-star"></i></p>
+                    <div class="mt-4 flex justify-between w-44 mx-auto">
+                        <div>
+                            <h3 class="text-sm text-white">
+                                <a href="#">
+                                    <span aria-hidden="true" class="absolute inset-0"></span>
+                                    ល្បែងផ្គុំរូប
+                                </a>
+                            </h3>
+                            <p class="mt-1 text-sm text-white">May. 21, 2025</p>
+                        </div>
+                        <p class="text-sm font-medium text-yellow-500">9.5 <i class="fa-solid fa-star"></i></p>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="group relative">
+                    <div class="h-64 w-44 mx-auto overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
+                        <img src="https://khdiamond.net/wp-content/uploads/2025/10/resized_w480_Poster3-3-scaled.jpg"
+                            alt="Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube."
+                            class="h-full w-full object-cover object-center" />
+                    </div>
+                    <div class="mt-4 flex justify-between w-44 mx-auto">
+                        <div>
+                            <h3 class="text-sm text-white">
+                                <a href="#">
+                                    <span aria-hidden="true" class="absolute inset-0"></span>
+                                    បិសាចចុងក្រោយ
+                                </a>
+                            </h3>
+                            <p class="mt-1 text-sm text-white">Sep. 03, 2025</p>
+                        </div>
+                        <p class="text-sm font-medium text-yellow-500">10 <i class="fa-solid fa-star"></i></p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
+    </section>
 
 
 </body>
@@ -942,7 +978,41 @@
     //check agree terms to enable register button
     const registerButton = document.getElementById('register');
     const agreeTerms = document.getElementById('agreeTerms');
+    // Search functionality
+    const input = document.getElementById('search');
+    const list = document.getElementById('list');
+    const items = document.querySelectorAll('#list li');
 
+    input.addEventListener('input', () => {
+        const query = input.value.trim().toUpperCase();
+
+        if (query.length > 0) {
+            list.classList.remove('hidden'); // Show list
+        } else {
+            list.classList.add('hidden'); // Hide list if no input
+        }
+
+        items.forEach(li => {
+            const text = li.textContent.toUpperCase();
+            li.style.display = text.includes(query) ? '' : 'none';
+        });
+    });
+
+    // Optional: Add click functionality to list items
+    items.forEach(li => {
+        li.addEventListener('click', () => {
+            input.value = li.textContent;
+            list.classList.add('hidden');
+        });
+    });
+
+    // Optional: Hide list when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search')) {
+            list.classList.add('hidden');
+        }
+    });
+    // Enable or disable register button based on checkbox
     agreeTerms.addEventListener('click', function () {
         registerButton.disabled = !agreeTerms.checked;
     });

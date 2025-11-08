@@ -369,14 +369,46 @@
             <div class="hidden md:flex items-center space-x-4">
                 <!-- Search Form -->
                 <div class="search relative">
-                    <form method="get" id="searchform" action="https://khdiamond.net" class="flex items-center">
-                        <input type="text" placeholder="Search..." name="s" id="s" value="" autocomplete="off"
+                    <form method="get" id="searchform" action="#" class="flex items-center">
+                        <input type="text" placeholder="Search..." name="s" id="search" value="" autocomplete="off"
                             class="px-3 py-1 bg-gray-800 rounded-l-md border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         <button type="submit"
                             class="px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded-r-md border border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <i class="fas fa-search pt-1"></i>
                         </button>
                     </form>
+
+                    <!-- Filterable List -->
+                    <ul id="list"
+                        class="divide-y divide-gray-700 rounded-md bg-gray-700 hidden absolute top-full left-0 right-0 z-10 max-h-60 overflow-y-auto">
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">និយាយខ្មែរ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">អក្សរខ្មែរ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ឥតគិតថ្លៃ Free</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">គិតតម្លៃ Paid</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ភាគ អឺរ៉ុប</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ភាគកូរ៉េ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ភាគ Anime</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Anime</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង​ ភាគល្បីៗ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Horror</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Drama</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Thriller</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី១</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី២</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី៣</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី៤</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី៥</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី៦</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង​ ស្រឡាញ់គេម្នាក់អែង</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង ជប៉ុន</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង បែបបច្ចេកវីទ្យា</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង ​ស្នេហា</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង​ ខ្មោច</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">របៀបបញ្ចូលទឹកប្រាក់</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿងក្តីខ្មោចកំបុតក្បាល</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង បែបសាហាវ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">movie khmer</li>
+                    </ul>
                 </div>
 
                 <!-- User Icon -->
@@ -856,6 +888,40 @@
     const agreeTerms = document.getElementById('agreeTerms');
     const continueBtn = document.getElementById('continueBtn');
     const Checkbox = document.getElementById('agree');
+    // Search functionality
+    const input = document.getElementById('search');
+    const list = document.getElementById('list');
+    const items = document.querySelectorAll('#list li');
+
+    input.addEventListener('input', () => {
+        const query = input.value.trim().toUpperCase();
+
+        if (query.length > 0) {
+            list.classList.remove('hidden'); // Show list
+        } else {
+            list.classList.add('hidden'); // Hide list if no input
+        }
+
+        items.forEach(li => {
+            const text = li.textContent.toUpperCase();
+            li.style.display = text.includes(query) ? '' : 'none';
+        });
+    });
+
+    // Optional: Add click functionality to list items
+    items.forEach(li => {
+        li.addEventListener('click', () => {
+            input.value = li.textContent;
+            list.classList.add('hidden');
+        });
+    });
+
+    // Optional: Hide list when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search')) {
+            list.classList.add('hidden');
+        }
+    });
     // Enable continue button when checkbox is checked
     Checkbox.addEventListener('change', function () {
         continueBtn.disabled = !this.checked;
