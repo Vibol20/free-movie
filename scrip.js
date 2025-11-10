@@ -16,7 +16,8 @@
         const backToLoginLinks = document.querySelectorAll('.back-to-login-link');
         const depozipt = document.getElementById('depozit');
         const depoziptMobile = document.getElementById('depozitMobile');
-        
+        const wathlogin = document.getElementById('wath-loging');
+        const wathregister = document.getElementById('wath-register');
         // Mobile menu toggle
         mobileMenuBtn.addEventListener('click', function() {
             mobileMenu.classList.toggle('active');
@@ -30,7 +31,16 @@
                 mobileMenu.classList.remove('active');
             }
         });
-
+        // Watch login overlay
+        wathlogin.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginOverlay.classList.add('active');
+        });
+        // Watch register overlay
+        wathregister.addEventListener('click', function(e) {
+            e.preventDefault();
+            signupOverlay.classList.add('active');
+        });
         //depozit all funtion 
         depozipt.addEventListener('click', function(e) {
             e.preventDefault();
