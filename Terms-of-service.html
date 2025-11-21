@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free movie</title>
+    <link rel="icon" type="image/png" href="./img/unnamed-removebg-preview (2).png">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- link font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fasthand&family=Hanuman:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    * {
+        font-family: 'Hanuman', sans-serif;
+    }
+
+    .slide-container {
+        display: flex;
+        transition: transform 0.7s ease-in-out;
+        font-family: 'Fasthand', cursive;
+    }
+
+    /* Login form overlay styles */
+    .login-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .login-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .login-form {
+        transform: translateY(-20px);
+        transition: transform 0.3s ease;
+    }
+
+    .login-overlay.active .login-form {
+        transform: translateY(0);
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Battambang:wght@400;700&display=swap');
+
+    .movie-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .movie-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .featured-badge {
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.8;
+        }
+    }
+
+    /* Mobile menu styles */
+    .mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    .mobile-menu.active {
+        max-height: 500px;
+    }
+
+    .dropdown-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    .dropdown-content.active {
+        max-height: 800px;
+    }
+
+    /* Mobile responsive carousel */
+    @media (max-width: 768px) {
+        .slide-container .min-w-full {
+            min-width: 100%;
+        }
+
+        .slide-container .min-w-full>div {
+            width: 100%;
+            flex: none;
+        }
+    }
+</style>
+
+<body>
+    <header id="header" class=" text-white opacity-100">
+        <div
+            class="flex items-center justify-between px-4 py-2 bg-gray-900 shadow-2xl fixed top-0 left-0 right-0 z-20 w-full">
+            <!-- Logo Section -->
+            <div class="flex-shrink-20">
+                <div class="logo ">
+                    <a href="./index.html" aria-label="KhDiaMonD Home">
+                        <img src="./img/logo.png" alt="KhDiaMonD" class="h-10 w-auto ">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center space-x-4">
+                <!-- Mobile Search Button -->
+                <button id="searchBtn" class="text-white text-xl">
+                    <i class="fas fa-search"></i>
+                </button>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobileMenuBtn" class="text-white text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <!-- Main Navigation -->
+            <div class="hidden md:flex flex-1 justify-center">
+                <nav class="menu-main-menu-container" aria-label="Main Navigation">
+                    <ul class="flex space-x-4">
+                        <!-- Top Up Menu Item -->
+                        <li class="relative group mt-2">
+                            <a href="#" class="px-3 py-2 hover:text-blue-400 transition-colors " id="depozit">
+                                បញ្ចូលទឹកប្រាក់
+                            </a>
+                        </li>
+
+                        <!-- Information Menu with Dropdown -->
+                        <li class="relative group">
+                            <a href="#" class="px-3 py-2 hover:text-blue-400 transition-colors flex items-center"
+                                aria-expanded="false">
+                                ព័ត៌មានផ្សេងៗ
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                            <ul
+                                class="absolute left-0 mt-2 w-64 bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                                <li><a href="./date-dalary.html"
+                                        class="block px-4 py-2 hover:bg-gray-700">កាលវិភាគប្រចាំសប្តាហ៍</a></li>
+                                <li><a href="https://t.me/pai_vibol"
+                                        class="block px-4 py-2 hover:bg-gray-700">ចម្ងល់ឬបញ្ហាផ្សេងៗ​</a></li>
+                                <li><a href="./tech-wath.html"
+                                        class="block px-4 py-2 hover:bg-gray-700">របៀបទស្សនា</a></li>
+                                <li><a href="./tech-wath.html"
+                                        class="block px-4 py-2 hover:bg-gray-700">របៀប loging និង បង្កើត Account</a>
+                                </li>
+                                <li><a href="./tech-wath.html"
+                                        class="block px-4 py-2 hover:bg-gray-700">របៀបប្រើប្រាស់វេបសាយ</a></li>
+                                <li><a href="./tech-wath.html"
+                                        class="block px-4 py-2 hover:bg-gray-700">របៀបបញ្ចូលទឹកប្រាក់</a></li>
+                                <li><a href="./tech-wath.html"
+                                        class="block px-4 py-2 hover:bg-gray-700">របៀបទិញរឿង</a></li>
+                                <li><a href="./tech-sarh.html"
+                                        class="block px-4 py-2 hover:bg-gray-700">របៀបស្វែងរករឿង</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Movies Menu with Dropdown -->
+                        <li class="relative group">
+                            <a href="#" class="px-3 py-2 hover:text-blue-400 transition-colors flex items-center"
+                                aria-expanded="false">
+                                រឿង ដុំ
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                            <ul
+                                class="absolute left-0 mt-2 w-64 bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                                <li><a href="./movie-khmer.html"
+                                        class="block px-4 py-2 hover:bg-gray-700">និយាយខ្មែរ</a></li>
+                                <li><a href="./speaking-khmer.html"
+                                        class="block px-4 py-2 hover:bg-gray-700">អក្សរខ្មែរ</a></li>
+                                <li><a href="https://khdiamond.net/genre/%e1%9e%a5%e1%9e%8f%e1%9e%82%e1%9e%b7%e1%9e%8f%e1%9e%90%e1%9f%92%e1%9e%9b%e1%9f%83/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ឥតគិតថ្លៃ Free</a></li>
+                                <li><a href="https://khdiamond.net/genre/%e1%9e%82%e1%9e%b7%e1%9e%8f%e1%9e%8f%e1%9e%98%e1%9f%92%e1%9e%9b%e1%9f%83-paid/"
+                                        class="block px-4 py-2 hover:bg-gray-700">គិតតម្លៃ Paid</a></li>
+                                <li class="relative group">
+                                    <a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-700 flex items-center justify-between">
+                                        គ្រួសារអ្នកនាំរឿង
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <ul
+                                        class="absolute left-full top-0 ml-1 w-48 bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
+                                        <li><a href="https://www.facebook.com/share/16eNRXaKwq/?mibextid=wwXIfr"
+                                                class="block px-4 py-2 hover:bg-gray-700">អ្នកនាំរឿង Page</a></li>
+                                        <li><a href="https://t.me/pai_vibol"
+                                                class="block px-4 py-2 hover:bg-gray-700">telegram channel</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- TV Shows Menu with Dropdown -->
+                        <li class="relative group">
+                            <a href="#"
+                                class="px-3 py-2 hover:text-blue-400 transition-colors flex items-center"
+                                aria-expanded="false">
+                                រឿង ភាគ
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                            <ul
+                                class="absolute left-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                                <li><a href="https://khdiamond.net/genre/ភាគ-អឺរ៉ុប/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ភាគ អឺរ៉ុប</a></li>
+                                <li><a href="https://khdiamond.net/genre/ភាគកូរ៉េ/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ភាគកូរ៉េ</a></li>
+                                <li><a href="https://khdiamond.net/genre/ភាគ-ចិន/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ភាគ ចិន</a></li>
+                                <li><a href="https://khdiamond.net/genre/ភាគ-ជប៉ុន/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ភាគ ជប៉ុន</a></li>
+                                <li><a href="https://khdiamond.net/genre/ភាគ-anime/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ភាគ Anime</a></li>
+                                <li><a href="https://khdiamond.net/genre/donghua/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ភាគ donghua</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Genres Menu with Dropdown -->
+                        <li class="relative group">
+                            <a href="#"
+                                class="px-3 py-2 hover:text-blue-400 transition-colors flex items-center"
+                                aria-expanded="false">
+                                ប្រភេទរឿង
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                            <ul
+                                class="absolute left-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                                <li><a href="https://khdiamond.net/genre/action/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Action</a></li>
+                                <li><a href="https://khdiamond.net/genre/adventure/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Adventure</a></li>
+                                <li><a href="https://khdiamond.net/genre/animation/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Animation</a></li>
+                                <li><a href="https://khdiamond.net/genre/comedy/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Comedy</a></li>
+                                <li><a href="https://khdiamond.net/genre/crime/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Crime</a></li>
+                                <li><a href="https://khdiamond.net/genre/drama/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Drama</a></li>
+                                <li><a href="https://khdiamond.net/genre/family/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Family</a></li>
+                                <li><a href="https://khdiamond.net/genre/horror/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Horror</a></li>
+                                <li><a href="https://khdiamond.net/genre/music/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Music</a></li>
+                                <li><a href="https://khdiamond.net/genre/mystery/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Mystery</a></li>
+                                <li><a href="https://khdiamond.net/genre/romance/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Romance</a></li>
+                                <li><a href="https://khdiamond.net/genre/science-fiction/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Science Fiction</a></li>
+                                <li><a href="https://khdiamond.net/genre/thriller/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Thriller</a></li>
+                                <li><a href="https://khdiamond.net/genre/war/"
+                                        class="block px-4 py-2 hover:bg-gray-700">War</a></li>
+                                <li><a href="https://khdiamond.net/genre/western/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Western</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Countries Menu with Dropdown -->
+                        <li class="relative group">
+                            <a href="#"
+                                class="px-3 py-2 hover:text-blue-400 transition-colors flex items-center"
+                                aria-expanded="false">
+                                ប្រទេស
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                            <ul
+                                class="absolute left-0 mt-2 w-64 bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                                <li><a href="https://khdiamond.net/genre/europe/"
+                                        class="block px-4 py-2 hover:bg-gray-700">អឺរ៉ុប</a></li>
+                                <li><a href="https://khdiamond.net/genre/korea/"
+                                        class="block px-4 py-2 hover:bg-gray-700">កូរ៉េ</a></li>
+                                <li><a href="https://khdiamond.net/genre/hongkong/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ចិន &amp; ហុងកុង</a></li>
+                                <li><a href="https://khdiamond.net/genre/japan/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ជប៉ុន</a></li>
+                                <li><a href="https://khdiamond.net/genre/vn/"
+                                        class="block px-4 py-2 hover:bg-gray-700">វៀតណាម</a></li>
+                                <li><a href="https://khdiamond.net/genre/indomalayphi/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ឥណ្ឌូនេសុី ,ម៉ាលេសុី ,ភីលីពីន</a></li>
+                                <li><a href="https://khdiamond.net/genre/india/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ឥណ្ឌា</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Marvel Universe Menu with Dropdown -->
+                        <li class="relative group">
+                            <a href="#"
+                                class="px-3 py-2 hover:text-blue-400 transition-colors flex items-center"
+                                aria-expanded="false">
+                                MARVEL UNIVERSE
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                            <ul
+                                class="absolute left-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                                <li><a href="https://khdiamond.net/genre/ដំណាក់កាលទី-១-phase-1/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ដំណាក់កាលទី ១</a></li>
+                                <li><a href="https://khdiamond.net/genre/ដំណាក់កាលទី-២-phase-2/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ដំណាក់កាលទី ២</a></li>
+                                <li><a href="https://khdiamond.net/genre/ដំណាក់កាលទី-៣-phase-3/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ដំណាក់កាលទី ៣</a></li>
+                                <li><a href="https://khdiamond.net/genre/ដំណាក់កាលទី-៤-phase-4/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ដំណាក់កាលទី ៤</a></li>
+                                <li><a href="https://khdiamond.net/genre/ដំណាក់កាលទី-៥-phase-5/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ដំណាក់កាលទី ៥</a></li>
+                                <li><a href="https://khdiamond.net/genre/ដំណាក់កាលទី-6-phase-6/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ដំណាក់កាលទី ៦</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Header Items (Search and User) -->
+            <div class="hidden md:flex items-center space-x-4">
+                <!-- Search Form -->
+                <div class="search relative">
+                    <form method="get" id="searchform" action="#" class="flex items-center">
+                        <input type="text" placeholder="Search..." name="s" id="search" value="" autocomplete="off"
+                            class="px-3 py-1 bg-gray-800 rounded-l-md border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <button type="submit"
+                            class="px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded-r-md border border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <i class="fas fa-search pt-1"></i>
+                        </button>
+                    </form>
+
+                    <!-- Filterable List -->
+                    <ul id="list"
+                        class="divide-y divide-gray-700 rounded-md bg-gray-700 hidden absolute top-full left-0 right-0 z-10 max-h-60 overflow-y-auto">
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">និយាយខ្មែរ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">អក្សរខ្មែរ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ឥតគិតថ្លៃ Free</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">គិតតម្លៃ Paid</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ភាគ អឺរ៉ុប</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ភាគកូរ៉េ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ភាគ Anime</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Anime</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង​ ភាគល្បីៗ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Horror</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Drama</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Thriller</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី១</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី២</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី៣</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី៤</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី៥</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី៦</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង​ ស្រឡាញ់គេម្នាក់អែង</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង ជប៉ុន</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង បែបបច្ចេកវីទ្យា</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង ​ស្នេហា</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង​ ខ្មោច</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">របៀបបញ្ចូលទឹកប្រាក់</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿងក្តីខ្មោចកំបុតក្បាល</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង បែបសាហាវ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">movie khmer</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង ​ស្នេហាវិទ្យាល័យ</li>
+                    </ul>
+                </div>
+
+                <!-- User Icon -->
+                <div class="dtuser">
+                    <a href="#"
+                        class="clicklogin text-2xl text-white border-l-2 border-white border-opacity-20 float-left px-4 py-1 hover:text-yellow-500"
+                        aria-label="User Account">
+                        <i class="fas fa-user-circle pt-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Search -->
+        <div id="mobileSearch" class="hidden pt-18 pb-2 px-4 bg-gray-900 fixed top-0 left-0 right-0 z-10 w-full">
+            <form class="flex items-center ">
+                <input type="text" placeholder="ស្វែងរក..."
+                    class="flex-1 px-3 py-2 bg-gray-800 rounded-l-md border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                <button type="submit" class="px-4 py-2 bg-yellow-600 hover:bg-yellow-700 rounded-r-md">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu lg:hidden bg-gray-800 fixed top-0 left-0 right-0 z-15 w-full pt-14">
+            <nav class="container mx-auto px-4 py-4 overflow-y-auto max-h-[calc(100vh-10rem)]">
+                <ul class="space-y-2">
+                    <li><a href="#" class="block py-2 hover:text-yellow-400" id="depozitMobile">បញ្ចូលទឹកប្រាក់</a></li>
+                    <li>
+                        <button class="w-full text-left py-2 hover:text-yellow-400 flex justify-between items-center"
+                            onclick="toggleDropdown('info')">
+                            ព័ត៌មានផ្សេងៗ
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="info" class="dropdown-content pl-4">
+                            <a href="./date-dalary.html"
+                                class="block py-2 hover:text-yellow-400">កាលវិភាគប្រចាំសប្តាហ៍</a>
+                            <a href="https://t.me/pai_vibol"
+                                class="block py-2 hover:text-yellow-400">ចម្ងល់ឬបញ្ហាផ្សេងៗ​</a>
+                            <a href="./tech-wath.html"
+                                class="block py-2 hover:text-yellow-400">របៀបទស្សនា</a>
+                            <a href="./tech-wath.html"
+                                class="block py-2 hover:text-yellow-400">របៀប loging និង បង្កើត Account</a>
+                            <a href="./tech-wath.html"
+                                class="block py-2 hover:text-yellow-400">របៀបប្រើប្រាស់វេបសាយ</a>
+                            <a href="./tech-wath.html"
+                                class="block py-2 hover:text-yellow-400">របៀបបញ្ចូលទឹកប្រាក់</a>
+                            <a href="./tech-wath.html"
+                                class="block py-2 hover:text-yellow-400">របៀបទិញរឿង</a>
+                            <a href="./tech-sarh.html"
+                                class="block py-2 hover:text-yellow-400">របៀបស្វែងរករឿង</a>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="w-full text-left py-2 hover:text-yellow-400 flex justify-between items-center"
+                            onclick="toggleDropdown('movies')">
+                            រឿង ដុំ
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="movies" class="dropdown-content pl-4">
+                            <a href="./movie-khmer.html"
+                                class="block py-2 hover:text-yellow-400">និយាយខ្មែរ</a>
+                            <a href="speaking-khmer.html"
+                                class="block py-2 hover:text-yellow-400">អក្សរខ្មែរ</a>
+                            <a href="https://khdiamond.net/genre/%e1%9e%a5%e1%9e%8f%e1%9e%82%e1%9e%b7%e1%9e%8f%e1%9e%90%e1%9f%92%e1%9e%9b%e1%9f%83/"
+                                class="block py-2 hover:text-yellow-400">ឥតគិតថ្លៃ Free</a>
+                            <a href="https://khdiamond.net/genre/%e1%9e%82%e1%9e%b7%e1%9e%8f%e1%9e%8f%e1%9e%98%e1%9f%92%e1%9e%9b%e1%9f%83-paid/"
+                                class="block py-2 hover:text-yellow-400">គិតតម្លៃ Paid</a>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="w-full text-left py-2 hover:text-yellow-400 flex justify-between items-center"
+                            onclick="toggleDropdown('tvshows')">
+                            រឿង ភាគ
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="tvshows" class="dropdown-content pl-4">
+                            <a href="https://khdiamond.net/genre/ភាគ-អឺរ៉ុប/"
+                                class="block py-2 hover:text-yellow-400">ភាគ អឺរ៉ុប</a>
+                            <a href="https://khdiamond.net/genre/ភាគកូរ៉េ/"
+                                class="block py-2 hover:text-yellow-400">ភាគកូរ៉េ</a>
+                            <a href="https://khdiamond.net/genre/ភាគ-ចិន/" class="block py-2 hover:text-yellow-400">ភាគ
+                                ចិន</a>
+                            <a href="https://khdiamond.net/genre/ភាគ-ជប៉ុន/"
+                                class="block py-2 hover:text-yellow-400">ភាគ ជប៉ុន</a>
+                            <a href="https://khdiamond.net/genre/ភាគ-anime/"
+                                class="block py-2 hover:text-yellow-400">ភាគ Anime</a>
+                            <a href="https://khdiamond.net/genre/donghua/" class="block py-2 hover:text-yellow-400">ភាគ
+                                donghua</a>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="w-full text-left py-2 hover:text-yellow-400 flex justify-between items-center"
+                            onclick="toggleDropdown('genres')">
+                            ប្រភេទរឿង
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="genres" class="dropdown-content pl-4">
+                            <a href="https://khdiamond.net/genre/action/"
+                                class="block py-2 hover:text-yellow-400">Action</a>
+                            <a href="https://khdiamond.net/genre/adventure/"
+                                class="block py-2 hover:text-yellow-400">Adventure</a>
+                            <a href="https://khdiamond.net/genre/animation/"
+                                class="block py-2 hover:text-yellow-400">Animation</a>
+                            <a href="https://khdiamond.net/genre/comedy/"
+                                class="block py-2 hover:text-yellow-400">Comedy</a>
+                            <a href="https://khdiamond.net/genre/crime/"
+                                class="block py-2 hover:text-yellow-400">Crime</a>
+                            <a href="https://khdiamond.net/genre/drama/"
+                                class="block py-2 hover:text-yellow-400">Drama</a>
+                            <a href="https://khdiamond.net/genre/family/"
+                                class="block py-2 hover:text-yellow-400">Family</a>
+                            <a href="https://khdiamond.net/genre/horror/"
+                                class="block py-2 hover:text-yellow-400">Horror</a>
+                            <a href="https://khdiamond.net/genre/music/"
+                                class="block py-2 hover:text-yellow-400">Music</a>
+                            <a href="https://khdiamond.net/genre/mystery/"
+                                class="block py-2 hover:text-yellow-400">Mystery</a>
+                            <a href="https://khdiamond.net/genre/romance/"
+                                class="block py-2 hover:text-yellow-400">Romance</a>
+                            <a href="https://khdiamond.net/genre/science-fiction/"
+                                class="block py-2 hover:text-yellow-400">Science Fiction</a>
+                            <a href="https://khdiamond.net/genre/thriller/"
+                                class="block py-2 hover:text-yellow-400">Thriller</a>
+                            <a href="https://khdiamond.net/genre/war/" class="block py-2 hover:text-yellow-400">War</a>
+                            <a href="https://khdiamond.net/genre/western/"
+                                class="block py-2 hover:text-yellow-400">Western</a>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="w-full text-left py-2 hover:text-yellow-400 flex justify-between items-center"
+                            onclick="toggleDropdown('countries')">
+                            ប្រទេស
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="countries" class="dropdown-content pl-4">
+                            <a href="https://khdiamond.net/genre/europe/"
+                                class="block py-2 hover:text-yellow-400">អឺរ៉ុប</a>
+                            <a href="https://khdiamond.net/genre/korea/"
+                                class="block py-2 hover:text-yellow-400">កូរ៉េ</a>
+                            <a href="https://khdiamond.net/genre/hongkong/" class="block py-2 hover:text-yellow-400">ចិន
+                                &amp; ហុងកុង</a>
+                            <a href="https://khdiamond.net/genre/japan/"
+                                class="block py-2 hover:text-yellow-400">ជប៉ុន</a>
+                            <a href="https://khdiamond.net/genre/vn/"
+                                class="block py-2 hover:text-yellow-400">វៀតណាម</a>
+                            <a href="https://khdiamond.net/genre/indomalayphi/"
+                                class="block py-2 hover:text-yellow-400">ឥណ្ឌូនេសុី ,ម៉ាលេសុី ,ភីលីពីន</a>
+                            <a href="https://khdiamond.net/genre/india/"
+                                class="block py-2 hover:text-yellow-400">ឥណ្ឌា</a>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="w-full text-left py-2 hover:text-yellow-400 flex justify-between items-center"
+                            onclick="toggleDropdown('marvel')">
+                            MARVEL UNIVERSE
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="marvel" class="dropdown-content pl-4">
+                            <a href="https://khdiamond.net/genre/ដំណាក់កាលទី-១-phase-1/"
+                                class="block py-2 hover:text-yellow-400">ដំណាក់កាលទី ១</a>
+                            <a href="https://khdiamond.net/genre/ដំណាក់កាលទី-២-phase-2/"
+                                class="block py-2 hover:text-yellow-400">ដំណាក់កាលទី ២</a>
+                            <a href="https://khdiamond.net/genre/ដំណាក់កាលទី-៣-phase-3/"
+                                class="block py-2 hover:text-yellow-400">ដំណាក់កាលទី ៣</a>
+                            <a href="https://khdiamond.net/genre/ដំណាក់កាលទី-៤-phase-4/"
+                                class="block py-2 hover:text-yellow-400">ដំណាក់កាលទី ៤</a>
+                            <a href="https://khdiamond.net/genre/ដំណាក់កាលទី-៥-phase-5/"
+                                class="block py-2 hover:text-yellow-400">ដំណាក់កាលទី ៥</a>
+                            <a href="https://khdiamond.net/genre/ដំណាក់កាលទី-6-phase-6/"
+                                class="block py-2 hover:text-yellow-400">ដំណាក់កាលទី ៦</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 hover:text-yellow-400 clicklogin ">ចូលគណនី</a>
+                    </li>
+                </ul>
+            </nav>
+    </header>
+    <section>
+        <!-- Login Form Overlay -->
+        <div id="loginOverlay" class="login-overlay">
+            <div class="login-form bg-gray-800 rounded-lg shadow-xl w-full max-w-md mx-4">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-white">ចូលគណនី</h2>
+                        <button id="closeLogin" class="text-gray-400 hover:text-white text-xl">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <form id="loginForm" class="space-y-4">
+                        <div>
+                            <label for="username"
+                                class="block text-sm font-medium text-gray-300 mb-1">ឈ្មោះអ្នកប្រើប្រាស់</label>
+                            <input type="text" id="username" name="username"
+                                class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="បញ្ចូលឈ្មោះអ្នកប្រើប្រាស់" required>
+                        </div>
+
+                        <div>
+                            <label for="password"
+                                class="block text-sm font-medium text-gray-300 mb-1">ពាក្យសម្ងាត់</label>
+                            <input type="password" id="password" name="password"
+                                class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="បញ្ចូលពាក្យសម្ងាត់" required>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="remember" name="remember"
+                                    class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-600 rounded bg-gray-700">
+                                <label for="remember" class="ml-2 block text-sm text-gray-300">ចងចាំខ្ញុំ</label>
+                            </div>
+
+                            <a href="#"
+                                class="forgot-password-link text-sm text-blue-400 hover:text-blue-300">ភ្លេចពាក្យសម្ងាត់?</a>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800">
+                            ចូល
+                        </button>
+                    </form>
+
+                    <div class="mt-6 text-center">
+                        <p class="text-gray-400">មិនទាន់មានគណនីទេ?</p>
+                        <a href="#"
+                            class="signup-link text-blue-400 hover:text-blue-300 font-medium">ចុះឈ្មោះឥឡូវនេះ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forgot Password Overlay -->
+        <div id="forgotPasswordOverlay" class="login-overlay">
+            <div class="login-form bg-gray-800 rounded-lg shadow-xl w-full max-w-md mx-4">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-white">ភ្លេចពាក្យសម្ងាត់</h2>
+                        <button id="closeForgotPassword" class="text-gray-400 hover:text-white text-xl">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <form id="forgotPasswordForm" class="space-y-4">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-1">អ៊ីមែល</label>
+                            <input type="email" id="email" name="email"
+                                class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="បញ្ចូលអ៊ីមែលរបស់អ្នក" required>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800">
+                            ស្នើសុំការកំណត់ឡើងវិញ
+                        </button>
+                    </form>
+
+                    <div class="mt-6 text-center">
+                        <p class="text-gray-400">ចងចាំពាក្យសម្ងាត់របស់អ្នកហើយ?</p>
+                        <a href="#"
+                            class="back-to-login-link text-blue-400 hover:text-blue-300 font-medium">ត្រឡប់ទៅការចូល</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sign Up Overlay -->
+        <div id="signupOverlay" class="login-overlay">
+            <div class="login-form bg-gray-800 rounded-lg shadow-xl w-full max-w-md mx-4">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-white">ចុះឈ្មោះ</h2>
+                        <button id="closeSignup" class="text-gray-400 hover:text-white text-xl">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <form id="signupForm" class="space-y-4">
+                        <div>
+                            <label for="fullname" class="block text-sm font-medium text-gray-300 mb-1">ឈ្មោះពេញ</label>
+                            <input type="text" id="fullname" name="fullname"
+                                class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="បញ្ចូលឈ្មោះពេញរបស់អ្នក" required>
+                        </div>
+
+                        <div>
+                            <label for="signupUsername"
+                                class="block text-sm font-medium text-gray-300 mb-1">ឈ្មោះអ្នកប្រើប្រាស់</label>
+                            <input type="text" id="signupUsername" name="username"
+                                class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="បញ្ចូលឈ្មោះអ្នកប្រើប្រាស់" required>
+                        </div>
+
+                        <div>
+                            <label for="signupEmail" class="block text-sm font-medium text-gray-300 mb-1">អ៊ីមែល</label>
+                            <input type="email" id="signupEmail" name="email"
+                                class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="បញ្ចូលអ៊ីមែលរបស់អ្នក" required>
+                        </div>
+
+                        <div>
+                            <label for="signupPassword"
+                                class="block text-sm font-medium text-gray-300 mb-1">ពាក្យសម្ងាត់</label>
+                            <input type="password" id="signupPassword" name="password"
+                                class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="បង្កើតពាក្យសម្ងាត់" required>
+                        </div>
+
+                        <div>
+                            <label for="confirmPassword"
+                                class="block text-sm font-medium text-gray-300 mb-1">បញ្ជាក់ពាក្យសម្ងាត់</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword"
+                                class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="បញ្ចូលពាក្យសម្ងាត់ម្តងទៀត" required>
+                        </div>
+
+                        <div class="flex items-center">
+                            <input type="checkbox" id="agreeTerms" name="agreeTerms"
+                                class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-600 rounded bg-gray-700">
+                            <label for="agreeTerms" class="ml-2 block text-sm text-gray-300">
+                                ខ្ញុំយល់ព្រមជាមួយ <a href="./Terms-of-service.html"
+                                    class="text-blue-400 hover:text-blue-300">លក្ខខណ្ឌនៃសេវាកម្ម</a>
+                            </label>
+                        </div>
+
+                        <button id="register" type="submit" disabled
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed ">
+                            ចុះឈ្មោះ
+                        </button>
+                    </form>
+
+                    <div class="mt-6 text-center">
+                        <p class="text-gray-400">មានគណនីរួចហើយ?</p>
+                        <a href="#"
+                            class="back-to-login-link text-blue-400 hover:text-blue-300 font-medium">ចូលទៅកាន់គណនីរបស់អ្នក</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 pt-18">
+        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+            <!-- Page Header -->
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6">
+                <h1 class="text-2xl md:text-3xl font-bold mb-2">លក្ខខណ្ឌនៃសេវាកម្ម</h1>
+                <p class="text-indigo-100">កាលបរិច្ឆេទប្រតិបត្តិ៖ ១ មករា ២០២៤</p>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6 md:p-8">
+                <div class="mb-8">
+                    <p class="mb-4">សូមស្វាគមន៍មកកាន់ <span class="font-semibold text-indigo-600">FREE MOVIE</span>។
+                        សូមអានលក្ខខណ្ឌនៃសេវាកម្ម ("លក្ខខណ្ឌ")
+                        នេះដោយប្រុងប្រយ័ត្នមុនពេលចាប់ផ្ដើមប្រើប្រាស់សេវាកម្មរបស់យើងខ្ញុំ។ ការចុះឈ្មោះ ចូលទស្សនា
+                        ឬប្រើប្រាស់គេហទំព័រនេះ បង្ហាញថាអ្នកបានយល់ព្រម និងទទួលយកនូវលក្ខខណ្ឌទាំងអស់ដែលមានចែងក្នុងទីនេះ។
+                    </p>
+                </div>
+
+                <!-- Section 1 -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-bold text-indigo-700 mb-4 border-b pb-2">១. ការទទួលខុសត្រូវចំពោះមាតិកា</h2>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>គេហទំព័រនេះដំណើរការជា "សេវាផ្សាយ" (Streaming Service) តាមអ៊ីនធឺណិតប៉ុណ្ណោះ។ យើងខ្ញុំ <span
+                                class="font-semibold">មិនមែន</span> ជាអ្នកបង្កើត
+                            ឬធ្វើការផលិតចម្លងច្បាប់ដើមនៃមាតិកាភាពយន្តទាំងអស់នោះទេ។</li>
+                        <li>មាតិកាទាំងអស់នៅលើគេហទំព័រនេះ (រួមទាំងភាពយន្ត, រូបភាព, អត្ថបទ, និងមាតិកាផ្សេងទៀត)
+                            គឺសម្រាប់គោលបំណងផ្សព្វផ្សាយ និងការត្រៀមលក្ខណ៍សិក្សាតែប៉ុណ្ណោះ។</li>
+                        <li>យើងខ្ញុំមិនទទួលខុសត្រូវចំពោះមាតិកាណាមួយដែលបានបង្ហាញដោយភាគីទីបីនោះទេ។</li>
+                    </ul>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-bold text-indigo-700 mb-4 border-b pb-2">២. ការប្រើប្រាស់គណនី</h2>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>អ្នកត្រូវតែមានអាយុយ៉ាងហោចណាស់ ១៣ ឆ្នាំ ដើម្បីបង្កើតគណនីនៅលើគេហទំព័ររបស់យើង។</li>
+                        <li>អ្នកទទួលខុសត្រូវចំពោះការថែទាំពាក្យសម្ងាត់ និងសកម្មភាពទាំងអស់ដែលកើតឡើងក្រោមគណនីរបស់អ្នក។</li>
+                        <li>យើងខ្ញុំសិទ្ធិបិទ ឬលុបគណនីណាមួយដែលគ្មានការអនុញ្ញាត ឬរំលោភលក្ខខណ្ឌនៃសេវាកម្ម។</li>
+                    </ul>
+                </div>
+
+                <!-- Section 3 -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-bold text-indigo-700 mb-4 border-b pb-2">៣. ការទូទាត់ និងការជាវ</h2>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>សេវាកម្មខ្លះនៅលើគេហទំព័ររបស់យើងអាចទាមទារការទូទាត់ ឬការជាវ។</li>
+                        <li>ការទូទាត់ទាំងអស់គឺមិនអាចដកហូតបានឡើយ លើកលែងតែមានការកំណត់ផ្សេងដោយច្បាប់។</li>
+                        <li>អ្នកទទួលខុសត្រូវចំពោះការទូទាត់ពន្ធដែលពាក់ព័ន្ធ (បើមាន)។</li>
+                    </ul>
+                </div>
+
+                <!-- Section 4 -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-bold text-indigo-700 mb-4 border-b pb-2">៤. កម្មសិទ្ធិបញ្ញា</h2>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>មាតិកាទាំងអស់នៅលើគេហទំព័រនេះ (រួមទាំងភាពយន្ត, រូបភាព, អត្ថបទ, និងមាតិកាផ្សេងទៀត)
+                            ត្រូវបានការពារដោយច្បាប់ស្ដីពីកម្មសិទ្ធិបញ្ញា។</li>
+                        <li>ការចម្លង ការបែងចែក ឬការប្រើប្រាស់ពុំមែនជាផ្លូវការណាមួយនៃមាតិកាទាំងនេះ
+                            ត្រូវបានហាមឃាត់ដោយច្បាប់។</li>
+                        <li>ប្រសិនបើអ្នកជាម្ចាស់កម្មសិទ្ធិបញ្ញា
+                            និងជឿថាមាតិការបស់អ្នកត្រូវបានប្រើប្រាស់ដោយគ្មានការអនុញ្ញាត សូមទាក់ទងមកយើងខ្ញុំភ្លាម។</li>
+                    </ul>
+                </div>
+
+                <!-- Section 5 -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-bold text-indigo-700 mb-4 border-b pb-2">៥. ការដកខ្លួនចេញពីសេវាកម្ម</h2>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>យើងខ្ញុំអាចបញ្ឈប់ ឬបិទសេវាកម្មណាមួយដោយមិនចាំបាច់ជូនដំណឹងជាមុន។</li>
+                        <li>យើងខ្ញុំមិនទទួលខុសត្រូវចំពោះការខូចខាតណាមួយដែលកើតឡើងដោយសារការបញ្ឈប់សេវាកម្មនោះទេ។</li>
+                    </ul>
+                </div>
+
+                <!-- Section 6 -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-bold text-indigo-700 mb-4 border-b pb-2">៦. ការផ្លាស់ប្តូរលក្ខខណ្ឌ</h2>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>យើងខ្ញុំសិទ្ធិធ្វើការកែប្រែលក្ខខណ្ឌនៃសេវាកម្មនេះគ្រប់ពេលវេលា។</li>
+                        <li>ការកែប្រែនឹងត្រូវបានបង្ហាញនៅលើទំព័រនេះ
+                            ហើយការប្រើប្រាស់បន្តរបស់អ្នកបន្ទាប់ពីការផ្លាស់ប្តូរនឹងត្រូវចាត់ទុកថាជាការទទួលយកលក្ខខណ្ឌថ្មី។
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Section 7 -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-bold text-indigo-700 mb-4 border-b pb-2">៧. ការទាក់ទង</h2>
+                    <p>ប្រសិនបើអ្នកមានសំណួរអំពីលក្ខខណ្ឌនៃសេវាកម្មទាំងនេះ សូមទាក់ទងមកយើងខ្ញុំតាមរយៈ៖</p>
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-indigo-600 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            <span>bolvi340@gmail.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-indigo-600 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                </path>
+                            </svg>
+                            <span>+855 978 218 672</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agreement -->
+                <div class="bg-gray-100 p-6 rounded-lg mt-8">
+                    <div class="flex items-start">
+                        <input type="checkbox" id="agree" class="mt-1 mr-3">
+                        <label for="agree" class="text-gray-700">ខ្ញុំបានអាន យល់ព្រម
+                            និងទទួលយកនូវលក្ខខណ្ឌនៃសេវាកម្មទាំងអស់ដែលបានចែងខាងលើ។</label>
+                    </div>
+                    <a href="./index.html">
+                        <button id="continueBtn" disabled
+                            class="w-full md:w-auto mt-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed ">
+                            បន្តទៅកាន់គេហទំព័រ
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+<script src="scrip.js"></script>
+<script>
+    const registerButton = document.getElementById('register');
+    const agreeTerms = document.getElementById('agreeTerms');
+    const continueBtn = document.getElementById('continueBtn');
+    const Checkbox = document.getElementById('agree');
+    // Search functionality
+    const input = document.getElementById('search');
+    const list = document.getElementById('list');
+    const items = document.querySelectorAll('#list li');
+
+    input.addEventListener('input', () => {
+        const query = input.value.trim().toUpperCase();
+
+        if (query.length > 0) {
+            list.classList.remove('hidden'); // Show list
+        } else {
+            list.classList.add('hidden'); // Hide list if no input
+        }
+
+        items.forEach(li => {
+            const text = li.textContent.toUpperCase();
+            li.style.display = text.includes(query) ? '' : 'none';
+        });
+    });
+
+    // Optional: Add click functionality to list items
+    items.forEach(li => {
+        li.addEventListener('click', () => {
+            input.value = li.textContent;
+            list.classList.add('hidden');
+        });
+    });
+
+    // Optional: Hide list when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search')) {
+            list.classList.add('hidden');
+        }
+    });
+    // Enable continue button when checkbox is checked
+    Checkbox.addEventListener('change', function () {
+        continueBtn.disabled = !this.checked;
+    });
+
+    // Continue button functionality
+    continueBtn.addEventListener('click', function () {
+        if (!this.disabled) {
+            alert('អ្នកបានទទួលយកលក្ខខណ្ឌនៃសេវាកម្មដោយជោគជ័យ!');
+            // In a real application, you would redirect to the main site
+            // window.location.href = '/';
+        }
+    });
+    //checkbox for register button
+    agreeTerms.addEventListener('click', function () {
+        registerButton.disabled = !agreeTerms.checked;
+    });
+</script>
+
+</html>

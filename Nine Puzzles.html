@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free movie</title>
+    <link rel="icon" type="image/png" href="./img/unnamed-removebg-preview (2).png">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- link font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fasthand&family=Hanuman:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    * {
+        font-family: 'Hanuman', sans-serif;
+    }
+
+    .slide-container {
+        display: flex;
+        transition: transform 0.7s ease-in-out;
+        font-family: 'Fasthand', cursive;
+    }
+
+    /* Login form overlay styles */
+    .login-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .login-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .login-form {
+        transform: translateY(-20px);
+        transition: transform 0.3s ease;
+    }
+
+    .login-overlay.active .login-form {
+        transform: translateY(0);
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Battambang:wght@400;700&display=swap');
+
+    .movie-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .movie-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .featured-badge {
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.8;
+        }
+    }
+
+    /* Mobile menu styles */
+    .mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    .mobile-menu.active {
+        max-height: 500px;
+    }
+
+    .dropdown-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    .dropdown-content.active {
+        max-height: 800px;
+    }
+
+    /* Mobile responsive carousel */
+    @media (max-width: 768px) {
+        .slide-container .min-w-full {
+            min-width: 100%;
+        }
+
+        .slide-container .min-w-full>div {
+            width: 100%;
+            flex: none;
+        }
+    }
+</style>
+
+<body>
+    <header id="header" class=" text-white opacity-100">
+        <div
+            class="flex items-center justify-between px-4 py-2 bg-gray-900 shadow-2xl fixed top-0 left-0 right-0 z-20 w-full">
+            <!-- Logo Section -->
+            <div class="flex-shrink-20">
+                <div class="logo ">
+                    <a href="./index.html" aria-label="KhDiaMonD Home">
+                        <img src="./img/logo.png" alt="KhDiaMonD" class="h-10 w-auto ">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center space-x-4">
+                <!-- Mobile Search Button -->
+                <button id="searchBtn" class="text-white text-xl">
+                    <i class="fas fa-search"></i>
+                </button>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobileMenuBtn" class="text-white text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <!-- Main Navigation -->
+            <div class="hidden md:flex flex-1 justify-center">
+                <nav class="menu-main-menu-container" aria-label="Main Navigation">
+                    <ul class="flex space-x-4">
+                        <!-- Top Up Menu Item -->
+                        <li class="relative group mt-2">
+                            <a href="#" class="px-3 py-2 hover:text-blue-400 transition-colors " id="depozit">
+                                បញ្ចូលទឹកប្រាក់
+                            </a>
+                        </li>
+
+                        <!-- Information Menu with Dropdown -->
+                        <li class="relative group">
+                            <a href="#" class="px-3 py-2 hover:text-blue-400 transition-colors flex items-center"
+                                aria-expanded="false">
+                                ព័ត៌មានផ្សេងៗ
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                            <ul
+                                class="absolute left-0 mt-2 w-64 bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                                <li><a href="./date-dalary.html"
+                                        class="block px-4 py-2 hover:bg-gray-700">កាលវិភាគប្រចាំសប្តាហ៍</a></li>
+                                <li><a href="https://t.me/pai_vibol"
+                                        class="block px-4 py-2 hover:bg-gray-700">ចម្ងល់ឬបញ្ហាផ្សេងៗ​</a></li>
+                                <li><a href="./tech-wath.html" class="block px-4 py-2 hover:bg-gray-700">របៀបទស្សនា</a>
+                                </li>
+                                <li><a href="./tech-wath.html" class="block px-4 py-2 hover:bg-gray-700">របៀប loging និង
+                                        បង្កើត Account</a>
+                                </li>
+                                <li><a href="./tech-wath.html"
+                                        class="block px-4 py-2 hover:bg-gray-700">របៀបប្រើប្រាស់វេបសាយ</a></li>
+                                <li><a href="./tech-wath.html"
+                                        class="block px-4 py-2 hover:bg-gray-700">របៀបបញ្ចូលទឹកប្រាក់</a></li>
+                                <li><a href="./tech-wath.html" class="block px-4 py-2 hover:bg-gray-700">របៀបទិញរឿង</a>
+                                </li>
+                                <li><a href="./tech-sarh.html"
+                                        class="block px-4 py-2 hover:bg-gray-700">របៀបស្វែងរករឿង</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Movies Menu with Dropdown -->
+                        <li class="relative group">
+                            <a href="#" class="px-3 py-2 hover:text-blue-400 transition-colors flex items-center"
+                                aria-expanded="false">
+                                រឿង ដុំ
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                            <ul
+                                class="absolute left-0 mt-2 w-64 bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                                <li><a href="./movie-khmer.html"
+                                        class="block px-4 py-2 hover:bg-gray-700">និយាយខ្មែរ</a></li>
+                                <li><a href="speaking-khmer.html"
+                                        class="block px-4 py-2 hover:bg-gray-700">អក្សរខ្មែរ</a></li>
+                                <li><a href="https://khdiamond.net/genre/%e1%9e%a5%e1%9e%8f%e1%9e%82%e1%9e%b7%e1%9e%8f%e1%9e%90%e1%9f%92%e1%9e%9b%e1%9f%83/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ឥតគិតថ្លៃ Free</a></li>
+                                <li><a href="https://khdiamond.net/genre/%e1%9e%82%e1%9e%b7%e1%9e%8f%e1%9e%8f%e1%9e%98%e1%9f%92%e1%9e%9b%e1%9f%83-paid/"
+                                        class="block px-4 py-2 hover:bg-gray-700">គិតតម្លៃ Paid</a></li>
+                                <li class="relative group">
+                                    <a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-700 flex items-center justify-between">
+                                        គ្រួសារអ្នកនាំរឿង
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <ul
+                                        class="absolute left-full top-0 ml-1 w-48 bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20">
+                                        <li><a href="https://www.facebook.com/share/16eNRXaKwq/?mibextid=wwXIfr"
+                                                class="block px-4 py-2 hover:bg-gray-700">អ្នកនាំរឿង Page</a></li>
+                                        <li><a href="https://t.me/pai_vibol"
+                                                class="block px-4 py-2 hover:bg-gray-700">telegram channel</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- TV Shows Menu with Dropdown -->
+                        <li class="relative group">
+                            <a href="#" class="px-3 py-2 hover:text-blue-400 transition-colors flex items-center"
+                                aria-expanded="false">
+                                រឿង ភាគ
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                            <ul
+                                class="absolute left-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                                <li><a href="https://khdiamond.net/genre/ភាគ-អឺរ៉ុប/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ភាគ អឺរ៉ុប</a></li>
+                                <li><a href="https://khdiamond.net/genre/ភាគកូរ៉េ/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ភាគកូរ៉េ</a></li>
+                                <li><a href="https://khdiamond.net/genre/ភាគ-ចិន/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ភាគ ចិន</a></li>
+                                <li><a href="https://khdiamond.net/genre/ភាគ-ជប៉ុន/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ភាគ ជប៉ុន</a></li>
+                                <li><a href="https://khdiamond.net/genre/ភាគ-anime/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ភាគ Anime</a></li>
+                                <li><a href="https://khdiamond.net/genre/donghua/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ភាគ donghua</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Genres Menu with Dropdown -->
+                        <li class="relative group">
+                            <a href="#" class="px-3 py-2 hover:text-blue-400 transition-colors flex items-center"
+                                aria-expanded="false">
+                                ប្រភេទរឿង
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                            <ul
+                                class="absolute left-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                                <li><a href="https://khdiamond.net/genre/action/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Action</a></li>
+                                <li><a href="https://khdiamond.net/genre/adventure/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Adventure</a></li>
+                                <li><a href="https://khdiamond.net/genre/animation/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Animation</a></li>
+                                <li><a href="https://khdiamond.net/genre/comedy/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Comedy</a></li>
+                                <li><a href="https://khdiamond.net/genre/crime/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Crime</a></li>
+                                <li><a href="https://khdiamond.net/genre/drama/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Drama</a></li>
+                                <li><a href="https://khdiamond.net/genre/family/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Family</a></li>
+                                <li><a href="https://khdiamond.net/genre/horror/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Horror</a></li>
+                                <li><a href="https://khdiamond.net/genre/music/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Music</a></li>
+                                <li><a href="https://khdiamond.net/genre/mystery/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Mystery</a></li>
+                                <li><a href="https://khdiamond.net/genre/romance/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Romance</a></li>
+                                <li><a href="https://khdiamond.net/genre/science-fiction/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Science Fiction</a></li>
+                                <li><a href="https://khdiamond.net/genre/thriller/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Thriller</a></li>
+                                <li><a href="https://khdiamond.net/genre/war/"
+                                        class="block px-4 py-2 hover:bg-gray-700">War</a></li>
+                                <li><a href="https://khdiamond.net/genre/western/"
+                                        class="block px-4 py-2 hover:bg-gray-700">Western</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Countries Menu with Dropdown -->
+                        <li class="relative group">
+                            <a href="#" class="px-3 py-2 hover:text-blue-400 transition-colors flex items-center"
+                                aria-expanded="false">
+                                ប្រទេស
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                            <ul
+                                class="absolute left-0 mt-2 w-64 bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                                <li><a href="https://khdiamond.net/genre/europe/"
+                                        class="block px-4 py-2 hover:bg-gray-700">អឺរ៉ុប</a></li>
+                                <li><a href="https://khdiamond.net/genre/korea/"
+                                        class="block px-4 py-2 hover:bg-gray-700">កូរ៉េ</a></li>
+                                <li><a href="https://khdiamond.net/genre/hongkong/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ចិន &amp; ហុងកុង</a></li>
+                                <li><a href="https://khdiamond.net/genre/japan/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ជប៉ុន</a></li>
+                                <li><a href="https://khdiamond.net/genre/vn/"
+                                        class="block px-4 py-2 hover:bg-gray-700">វៀតណាម</a></li>
+                                <li><a href="https://khdiamond.net/genre/indomalayphi/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ឥណ្ឌូនេសុី ,ម៉ាលេសុី ,ភីលីពីន</a></li>
+                                <li><a href="https://khdiamond.net/genre/india/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ឥណ្ឌា</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Marvel Universe Menu with Dropdown -->
+                        <li class="relative group">
+                            <a href="#" class="px-3 py-2 hover:text-blue-400 transition-colors flex items-center"
+                                aria-expanded="false">
+                                MARVEL UNIVERSE
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                            <ul
+                                class="absolute left-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
+                                <li><a href="https://khdiamond.net/genre/ដំណាក់កាលទី-១-phase-1/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ដំណាក់កាលទី ១</a></li>
+                                <li><a href="https://khdiamond.net/genre/ដំណាក់កាលទី-២-phase-2/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ដំណាក់កាលទី ២</a></li>
+                                <li><a href="https://khdiamond.net/genre/ដំណាក់កាលទី-៣-phase-3/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ដំណាក់កាលទី ៣</a></li>
+                                <li><a href="https://khdiamond.net/genre/ដំណាក់កាលទី-៤-phase-4/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ដំណាក់កាលទី ៤</a></li>
+                                <li><a href="https://khdiamond.net/genre/ដំណាក់កាលទី-៥-phase-5/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ដំណាក់កាលទី ៥</a></li>
+                                <li><a href="https://khdiamond.net/genre/ដំណាក់កាលទី-6-phase-6/"
+                                        class="block px-4 py-2 hover:bg-gray-700">ដំណាក់កាលទី ៦</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Header Items (Search and User) -->
+            <div class="hidden md:flex items-center space-x-4">
+                <!-- Search Form -->
+                <div class="search relative">
+                    <form method="get" id="searchform" action="#" class="flex items-center">
+                        <input type="text" placeholder="Search..." name="s" id="search" value="" autocomplete="off"
+                            class="px-3 py-1 bg-gray-800 rounded-l-md border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <button type="submit"
+                            class="px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded-r-md border border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <i class="fas fa-search pt-1"></i>
+                        </button>
+                    </form>
+
+                    <!-- Filterable List -->
+                    <ul id="list"
+                        class="divide-y divide-gray-700 rounded-md bg-gray-700 hidden absolute top-full left-0 right-0 z-10 max-h-60 overflow-y-auto">
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">និយាយខ្មែរ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">អក្សរខ្មែរ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ឥតគិតថ្លៃ Free</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">គិតតម្លៃ Paid</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ភាគ អឺរ៉ុប</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ភាគកូរ៉េ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ភាគ Anime</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Anime</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង​ ភាគល្បីៗ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Horror</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Drama</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Thriller</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី១</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី២</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី៣</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី៤</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី៥</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">ដំណាក់កាលទី៦</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង​ ស្រឡាញ់គេម្នាក់អែង</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង ជប៉ុន</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង បែបបច្ចេកវីទ្យា</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង ​ស្នេហា</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង​ ខ្មោច</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">របៀបបញ្ចូលទឹកប្រាក់</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿងក្តីខ្មោចកំបុតក្បាល</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង បែបសាហាវ</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">movie khmer</li>
+                        <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">រឿង ​ស្នេហាវិទ្យាល័យ</li>
+                    </ul>
+                </div>
+
+                <!-- User Icon -->
+                <div class="dtuser">
+                    <a href="#"
+                        class="clicklogin text-2xl text-white border-l-2 border-white border-opacity-20 float-left px-4 py-1 hover:text-yellow-500"
+                        aria-label="User Account">
+                        <i class="fas fa-user-circle pt-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Search -->
+        <div id="mobileSearch" class="hidden pt-18 pb-2 px-4 bg-gray-900 fixed top-0 left-0 right-0 z-10 w-full">
+            <form class="flex items-center ">
+                <input type="text" placeholder="ស្វែងរក..."
+                    class="flex-1 px-3 py-2 bg-gray-800 rounded-l-md border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                <button type="submit" class="px-4 py-2 bg-yellow-600 hover:bg-yellow-700 rounded-r-md">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu lg:hidden bg-gray-800 fixed top-0 left-0 right-0 z-15 w-full pt-14">
+            <nav class="container mx-auto px-4 py-4 overflow-y-auto max-h-[calc(100vh-10rem)]">
+                <ul class="space-y-2">
+                    <li><a href="#" class="block py-2 hover:text-yellow-400" id="depozitMobile">បញ្ចូលទឹកប្រាក់</a></li>
+                    <li>
+                        <button class="w-full text-left py-2 hover:text-yellow-400 flex justify-between items-center"
+                            onclick="toggleDropdown('info')">
+                            ព័ត៌មានផ្សេងៗ
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="info" class="dropdown-content pl-4">
+                            <a href="./date-dalary.html"
+                                class="block py-2 hover:text-yellow-400">កាលវិភាគប្រចាំសប្តាហ៍</a>
+                            <a href="https://t.me/pai_vibol"
+                                class="block py-2 hover:text-yellow-400">ចម្ងល់ឬបញ្ហាផ្សេងៗ​</a>
+                            <a href="./tech-wath.html" class="block py-2 hover:text-yellow-400">របៀបទស្សនា</a>
+                            <a href="./tech-wath.html" class="block py-2 hover:text-yellow-400">របៀប loging និង បង្កើត
+                                Account</a>
+                            <a href="./tech-wath.html" class="block py-2 hover:text-yellow-400">របៀបប្រើប្រាស់វេបសាយ</a>
+                            <a href="./tech-wath.html" class="block py-2 hover:text-yellow-400">របៀបបញ្ចូលទឹកប្រាក់</a>
+                            <a href="./tech-wath.html" class="block py-2 hover:text-yellow-400">របៀបទិញរឿង</a>
+                            <a href="./tech-sarh.html" class="block py-2 hover:text-yellow-400">របៀបស្វែងរករឿង</a>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="w-full text-left py-2 hover:text-yellow-400 flex justify-between items-center"
+                            onclick="toggleDropdown('movies')">
+                            រឿង ដុំ
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="movies" class="dropdown-content pl-4">
+                            <a href="./movie-khmer.html" class="block py-2 hover:text-yellow-400">និយាយខ្មែរ</a>
+                            <a href="speaking-khmer.html"
+                                class="block py-2 hover:text-yellow-400">អក្សរខ្មែរ</a>
+                            <a href="https://khdiamond.net/genre/%e1%9e%a5%e1%9e%8f%e1%9e%82%e1%9e%b7%e1%9e%8f%e1%9e%90%e1%9f%92%e1%9e%9b%e1%9f%83/"
+                                class="block py-2 hover:text-yellow-400">ឥតគិតថ្លៃ Free</a>
+                            <a href="https://khdiamond.net/genre/%e1%9e%82%e1%9e%b7%e1%9e%8f%e1%9e%8f%e1%9e%98%e1%9f%92%e1%9e%9b%e1%9f%83-paid/"
+                                class="block py-2 hover:text-yellow-400">គិតតម្លៃ Paid</a>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="w-full text-left py-2 hover:text-yellow-400 flex justify-between items-center"
+                            onclick="toggleDropdown('tvshows')">
+                            រឿង ភាគ
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="tvshows" class="dropdown-content pl-4">
+                            <a href="https://khdiamond.net/genre/ភាគ-អឺរ៉ុប/"
+                                class="block py-2 hover:text-yellow-400">ភាគ អឺរ៉ុប</a>
+                            <a href="https://khdiamond.net/genre/ភាគកូរ៉េ/"
+                                class="block py-2 hover:text-yellow-400">ភាគកូរ៉េ</a>
+                            <a href="https://khdiamond.net/genre/ភាគ-ចិន/" class="block py-2 hover:text-yellow-400">ភាគ
+                                ចិន</a>
+                            <a href="https://khdiamond.net/genre/ភាគ-ជប៉ុន/"
+                                class="block py-2 hover:text-yellow-400">ភាគ ជប៉ុន</a>
+                            <a href="https://khdiamond.net/genre/ភាគ-anime/"
+                                class="block py-2 hover:text-yellow-400">ភាគ Anime</a>
+                            <a href="https://khdiamond.net/genre/donghua/" class="block py-2 hover:text-yellow-400">ភាគ
+                                donghua</a>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="w-full text-left py-2 hover:text-yellow-400 flex justify-between items-center"
+                            onclick="toggleDropdown('genres')">
+                            ប្រភេទរឿង
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="genres" class="dropdown-content pl-4">
+                            <a href="https://khdiamond.net/genre/action/"
+                                class="block py-2 hover:text-yellow-400">Action</a>
+                            <a href="https://khdiamond.net/genre/adventure/"
+                                class="block py-2 hover:text-yellow-400">Adventure</a>
+                            <a href="https://khdiamond.net/genre/animation/"
+                                class="block py-2 hover:text-yellow-400">Animation</a>
+                            <a href="https://khdiamond.net/genre/comedy/"
+                                class="block py-2 hover:text-yellow-400">Comedy</a>
+                            <a href="https://khdiamond.net/genre/crime/"
+                                class="block py-2 hover:text-yellow-400">Crime</a>
+                            <a href="https://khdiamond.net/genre/drama/"
+                                class="block py-2 hover:text-yellow-400">Drama</a>
+                            <a href="https://khdiamond.net/genre/family/"
+                                class="block py-2 hover:text-yellow-400">Family</a>
+                            <a href="https://khdiamond.net/genre/horror/"
+                                class="block py-2 hover:text-yellow-400">Horror</a>
+                            <a href="https://khdiamond.net/genre/music/"
+                                class="block py-2 hover:text-yellow-400">Music</a>
+                            <a href="https://khdiamond.net/genre/mystery/"
+                                class="block py-2 hover:text-yellow-400">Mystery</a>
+                            <a href="https://khdiamond.net/genre/romance/"
+                                class="block py-2 hover:text-yellow-400">Romance</a>
+                            <a href="https://khdiamond.net/genre/science-fiction/"
+                                class="block py-2 hover:text-yellow-400">Science Fiction</a>
+                            <a href="https://khdiamond.net/genre/thriller/"
+                                class="block py-2 hover:text-yellow-400">Thriller</a>
+                            <a href="https://khdiamond.net/genre/war/" class="block py-2 hover:text-yellow-400">War</a>
+                            <a href="https://khdiamond.net/genre/western/"
+                                class="block py-2 hover:text-yellow-400">Western</a>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="w-full text-left py-2 hover:text-yellow-400 flex justify-between items-center"
+                            onclick="toggleDropdown('countries')">
+                            ប្រទេស
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="countries" class="dropdown-content pl-4">
+                            <a href="https://khdiamond.net/genre/europe/"
+                                class="block py-2 hover:text-yellow-400">អឺរ៉ុប</a>
+                            <a href="https://khdiamond.net/genre/korea/"
+                                class="block py-2 hover:text-yellow-400">កូរ៉េ</a>
+                            <a href="https://khdiamond.net/genre/hongkong/" class="block py-2 hover:text-yellow-400">ចិន
+                                &amp; ហុងកុង</a>
+                            <a href="https://khdiamond.net/genre/japan/"
+                                class="block py-2 hover:text-yellow-400">ជប៉ុន</a>
+                            <a href="https://khdiamond.net/genre/vn/"
+                                class="block py-2 hover:text-yellow-400">វៀតណាម</a>
+                            <a href="https://khdiamond.net/genre/indomalayphi/"
+                                class="block py-2 hover:text-yellow-400">ឥណ្ឌូនេសុី ,ម៉ាលេសុី ,ភីលីពីន</a>
+                            <a href="https://khdiamond.net/genre/india/"
+                                class="block py-2 hover:text-yellow-400">ឥណ្ឌា</a>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="w-full text-left py-2 hover:text-yellow-400 flex justify-between items-center"
+                            onclick="toggleDropdown('marvel')">
+                            MARVEL UNIVERSE
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="marvel" class="dropdown-content pl-4">
+                            <a href="https://khdiamond.net/genre/ដំណាក់កាលទី-១-phase-1/"
+                                class="block py-2 hover:text-yellow-400">ដំណាក់កាលទី ១</a>
+                            <a href="https://khdiamond.net/genre/ដំណាក់កាលទី-២-phase-2/"
+                                class="block py-2 hover:text-yellow-400">ដំណាក់កាលទី ២</a>
+                            <a href="https://khdiamond.net/genre/ដំណាក់កាលទី-៣-phase-3/"
+                                class="block py-2 hover:text-yellow-400">ដំណាក់កាលទី ៣</a>
+                            <a href="https://khdiamond.net/genre/ដំណាក់កាលទី-៤-phase-4/"
+                                class="block py-2 hover:text-yellow-400">ដំណាក់កាលទី ៤</a>
+                            <a href="https://khdiamond.net/genre/ដំណាក់កាលទី-៥-phase-5/"
+                                class="block py-2 hover:text-yellow-400">ដំណាក់កាលទី ៥</a>
+                            <a href="https://khdiamond.net/genre/ដំណាក់កាលទី-6-phase-6/"
+                                class="block py-2 hover:text-yellow-400">ដំណាក់កាលទី ៦</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 hover:text-yellow-400 clicklogin ">ចូលគណនី</a>
+                    </li>
+                </ul>
+            </nav>
+    </header>
+    <section>
+        <!-- Login Form Overlay -->
+        <div id="loginOverlay" class="login-overlay">
+            <div class="login-form bg-gray-800 rounded-lg shadow-xl w-full max-w-md mx-4">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-white">ចូលគណនី</h2>
+                        <button id="closeLogin" class="text-gray-400 hover:text-white text-xl">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <form id="loginForm" class="space-y-4">
+                        <div>
+                            <label for="username"
+                                class="block text-sm font-medium text-gray-300 mb-1">ឈ្មោះអ្នកប្រើប្រាស់</label>
+                            <input type="text" id="username" name="username"
+                                class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="បញ្ចូលឈ្មោះអ្នកប្រើប្រាស់" required>
+                        </div>
+
+                        <div>
+                            <label for="password"
+                                class="block text-sm font-medium text-gray-300 mb-1">ពាក្យសម្ងាត់</label>
+                            <input type="password" id="password" name="password"
+                                class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="បញ្ចូលពាក្យសម្ងាត់" required>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="remember" name="remember"
+                                    class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-600 rounded bg-gray-700">
+                                <label for="remember" class="ml-2 block text-sm text-gray-300">ចងចាំខ្ញុំ</label>
+                            </div>
+
+                            <a href="#"
+                                class="forgot-password-link text-sm text-blue-400 hover:text-blue-300">ភ្លេចពាក្យសម្ងាត់?</a>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800">
+                            ចូល
+                        </button>
+                    </form>
+
+                    <div class="mt-6 text-center">
+                        <p class="text-gray-400">មិនទាន់មានគណនីទេ?</p>
+                        <a href="#"
+                            class="signup-link text-blue-400 hover:text-blue-300 font-medium">ចុះឈ្មោះឥឡូវនេះ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forgot Password Overlay -->
+        <div id="forgotPasswordOverlay" class="login-overlay">
+            <div class="login-form bg-gray-800 rounded-lg shadow-xl w-full max-w-md mx-4">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-white">ភ្លេចពាក្យសម្ងាត់</h2>
+                        <button id="closeForgotPassword" class="text-gray-400 hover:text-white text-xl">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <form id="forgotPasswordForm" class="space-y-4">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-1">អ៊ីមែល</label>
+                            <input type="email" id="email" name="email"
+                                class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="បញ្ចូលអ៊ីមែលរបស់អ្នក" required>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800">
+                            ស្នើសុំការកំណត់ឡើងវិញ
+                        </button>
+                    </form>
+
+                    <div class="mt-6 text-center">
+                        <p class="text-gray-400">ចងចាំពាក្យសម្ងាត់របស់អ្នកហើយ?</p>
+                        <a href="#"
+                            class="back-to-login-link text-blue-400 hover:text-blue-300 font-medium">ត្រឡប់ទៅការចូល</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sign Up Overlay -->
+        <div id="signupOverlay" class="login-overlay">
+            <div class="login-form bg-gray-800 rounded-lg shadow-xl w-full max-w-md mx-4">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-white">ចុះឈ្មោះ</h2>
+                        <button id="closeSignup" class="text-gray-400 hover:text-white text-xl">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <form id="signupForm" class="space-y-4">
+                        <div>
+                            <label for="fullname" class="block text-sm font-medium text-gray-300 mb-1">ឈ្មោះពេញ</label>
+                            <input type="text" id="fullname" name="fullname"
+                                class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="បញ្ចូលឈ្មោះពេញរបស់អ្នក" required>
+                        </div>
+
+                        <div>
+                            <label for="signupUsername"
+                                class="block text-sm font-medium text-gray-300 mb-1">ឈ្មោះអ្នកប្រើប្រាស់</label>
+                            <input type="text" id="signupUsername" name="username"
+                                class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="បញ្ចូលឈ្មោះអ្នកប្រើប្រាស់" required>
+                        </div>
+
+                        <div>
+                            <label for="signupEmail" class="block text-sm font-medium text-gray-300 mb-1">អ៊ីមែល</label>
+                            <input type="email" id="signupEmail" name="email"
+                                class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="បញ្ចូលអ៊ីមែលរបស់អ្នក" required>
+                        </div>
+
+                        <div>
+                            <label for="signupPassword"
+                                class="block text-sm font-medium text-gray-300 mb-1">ពាក្យសម្ងាត់</label>
+                            <input type="password" id="signupPassword" name="password"
+                                class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="បង្កើតពាក្យសម្ងាត់" required>
+                        </div>
+
+                        <div>
+                            <label for="confirmPassword"
+                                class="block text-sm font-medium text-gray-300 mb-1">បញ្ជាក់ពាក្យសម្ងាត់</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword"
+                                class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                placeholder="បញ្ចូលពាក្យសម្ងាត់ម្តងទៀត" required>
+                        </div>
+
+                        <div class="flex items-center">
+                            <input type="checkbox" id="agreeTerms" name="agreeTerms"
+                                class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-600 rounded bg-gray-700">
+                            <label for="agreeTerms" class="ml-2 block text-sm text-gray-300">
+                                ខ្ញុំយល់ព្រមជាមួយ <a href="./Terms-of-service.html"
+                                    class="text-blue-400 hover:text-blue-300">លក្ខខណ្ឌនៃសេវាកម្ម</a>
+                            </label>
+                        </div>
+
+                        <button id="register" type="submit" disabled
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed ">
+                            ចុះឈ្មោះ
+                        </button>
+                    </form>
+
+                    <div class="mt-6 text-center">
+                        <p class="text-gray-400">មានគណនីរួចហើយ?</p>
+                        <a href="#"
+                            class="back-to-login-link text-blue-400 hover:text-blue-300 font-medium">ចូលទៅកាន់គណនីរបស់អ្នក</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="text-white min-h-screen bg-gray-800 mt-14">
+        <!-- Header Section with Background -->
+        <div class="relative h-64 bg-cover bg-center"
+            style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('https://image.tmdb.org/t/p/original/6OfitF3ifOJmlglcixB3ixnNydW.jpg');">
+            <div class="absolute bottom-8 sm:bottom-10 md:bottom-12 left-1/2 transform -translate-x-1/2 text-center 
+         px-4 sm:px-6 md:px-8 lg:px-10 translate-y-[-15px] sm:translate-y-0 w-[95%] sm:w-auto pb-12 sm:pb-0">
+                <div class="inline-block text-white text-sm sm:text-base md:text-lg leading-relaxed">
+                    <p class="mb-2">
+                        សូម
+                        <a href="#" id="wath-loging" class="text-yellow-500 hover:text-yellow-400 font-medium">
+                            ចូលប្រើគណនីរបស់អ្នកជាមុន
+                        </a>
+                    </p>
+                    <p>
+                        មិនទាន់មានគណនី?
+                        <a href="#" id="wath-register" class="text-yellow-500 hover:text-yellow-400 font-medium">
+                            ចុចត្រង់នេះ!
+                        </a>
+                        ដើម្បីបង្កើតមួយដោយឥតគិតថ្លៃ
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- Play Button -->
+            <a href="https://www.youtube.com/watch?v=q7Jz9_2qYOA">
+                <div class="absolute bottom-4 left-4 flex items-center gap-2 cursor-pointer hover:opacity-80">
+                    <div class="w-8 h-8 bg-gray-500 bg-opacity rounded-full flex items-center justify-center">
+                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                        </svg>
+                    </div>
+                    <span class="text-sm">មើលឈុតខ្លីៗ</span>
+                </div>
+            </a>
+
+            <!-- YouTube Icon -->
+            <div class="absolute bottom-4 right-4">
+                <svg class="w-8 h-8 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Movie Info Section -->
+        <div class="container mx-auto px-4 py-8">
+            <div class="flex flex-col md:flex-row gap-8">
+                <!-- Movie Poster -->
+                <div class="flex-shrink-0">
+                    <img src="https://khdiamond.net/wp-content/uploads/2025/11/Poster-1.jpg" alt="The Last Dance"
+                        class="w-48 h-72 object-cover rounded-lg shadow-2xl">
+                </div>
+
+                <!-- Movie Details -->
+                <div class="flex-1">
+                    <h1 class="text-3xl md:text-4xl font-bold mb-4">ល្បែងផ្គុំរូប</h1>
+
+                    <div class="flex items-center gap-4 text-sm text-gray-400 mb-4">
+                        <span>May. 21, 2025</span>
+                        <span class="text-yellow-700">Disney+</span>
+                    </div>
+
+                    <!-- Rating -->
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="text-5xl font-bold">7.7</div>
+                        <div class="flex flex-col">
+                            <div class="flex gap-1 text-yellow-500">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                <span>★</span><span>★</span><span>★</span><span class="text-gray-600">★</span><span class="text-gray-600">★</span>
+                            </div>
+                            <div class="text-sm text-gray-400">11 votes</div>
+                        </div>
+                        <button class="ml-4 px-4 py-2 border border-gray-600 rounded hover:bg-gray-800 transition">
+                            Your rating: 0
+                        </button>
+                    </div>
+
+                    <!-- Genres -->
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">Drama</span>
+                        <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">Horror</span>
+                        <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">គិតតំម្លៃ-paid</span>
+                        <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">ចិន & ហុងកុង</span>
+                        <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">និយាយខ្មែរ</span>
+                    </div>
+
+                    <!-- Tabs -->
+                    <div class="flex gap-4 border-b border-gray-700 mb-6">
+                        <button onclick="showTab('info-tab')"
+                            class="tab-button px-4 py-2 text-yellow-500 border-b-2 border-yellow-500 font-semibold">ព័ត៌មាន</button>
+                        <button onclick="showTab('cast-tab')"
+                            class="tab-button px-4 py-2 text-gray-400 hover:text-white">តួសម្តែង</button>
+                    </div>
+
+                    <div id="info-tab" class="tab-content">
+                        <!-- Synopsis -->
+                        <div class="mb-8">
+                            <h2 class="text-xl font-semibold mb-3">សង្ខេប</h2>
+                            <p class="text-gray-300 leading-relaxed">
+                                Ten years after discovering her murdered uncle, Ena and Detective Hansaem must cooperate to stop a series of similar murders – each linked by strange puzzle pieces.
+                            </p>
+                        </div>
+
+                        <!-- Gallery -->
+                        <div class="grid grid-cols-3 gap-4 mb-8">
+                            <img src="https://image.tmdb.org/t/p/original/i7icdBtQ8apM2h5XvQuyO71Msoa.jpg" alt="Scene 1"
+                                class="w-full h-60 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                                onclick="openFullscreen(this)">
+                            <img src="https://image.tmdb.org/t/p/original/6OfitF3ifOJmlglcixB3ixnNydW.jpg" alt="Scene 2"
+                                class="w-full h-60 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                                onclick="openFullscreen(this)">
+                            <img src="https://image.tmdb.org/t/p/original/pP5Bkg0O4RYBMLtFu3GZAzHiTNv.jpg" alt="Scene 3"
+                                class="w-full h-60 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                                onclick="openFullscreen(this)">
+                        </div>
+
+                        <!-- Fullscreen Modal -->
+                        <div id="fullscreenModal"
+                            class="hidden fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
+                            <img id="fullscreenImage" src="" alt="Full image" class="max-h-[90vh] rounded-lg shadow-lg">
+                        </div>
+
+                        <!-- Additional Info -->
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center gap-4">
+                                <span class="text-gray-400 w-32">ចំណងជើងដើម</span>
+                                <span class="text-yellow-500">나인 퍼즐</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="text-gray-400 w-36">រង្វាយតម្លៃលើ IMDb</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-yellow-500">★</span>
+                                    <span>7.1</span>
+                                    <span class="text-gray-400">592 នាក់</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="text-gray-400 w-36">រង្វាយតម្លៃលើ TMDb</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-yellow-500">★</span>
+                                    <span>8.8</span>
+                                    <span class="text-gray-400">5 នាក់</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Share -->
+                        <div class="hidden sm:flex flex-wrap items-center gap-3 sm:gap-4 mb-6">
+                            <span class="text-gray-400 w-full sm:w-auto text-sm sm:text-base">Shared 1</span>
+
+                            <!-- Facebook -->
+                            <button
+                                class="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded text-white text-sm sm:text-base transition">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                </svg>
+                                Facebook
+                            </button>
+
+                            <!-- Twitter -->
+                            <button
+                                class="flex items-center gap-2 px-4 py-2 bg-blue-400 hover:bg-blue-500 rounded text-white text-sm sm:text-base transition">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                                </svg>
+                                Twitter
+                            </button>
+
+                            <!-- Pinterest -->
+                            <button
+                                class="flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 rounded text-white text-sm sm:text-base transition">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm-1 5v4H7v2h4v4h2v-4h4v-2h-4V7h-2z" />
+                                </svg>
+                                Pinterest
+                            </button>
+
+                            <!-- WhatsApp -->
+                            <button
+                                class="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 rounded text-white text-sm sm:text-base transition">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                                </svg>
+                                WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                    <div id="cast-tab" class="tab-content hidden">
+                        <div class="container mx-auto px-4 py-8">
+                            <!-- Director -->
+                            <div class="mb-12">
+                                <h2 class="text-2xl font-bold mb-6">អ្នកដឹងនាំ</h2>
+                                <div class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg max-w-md">
+                                    <img src="https://image.tmdb.org/t/p/w92/du17CLt0uH1ixScQJl2tL5UAII3.jpg"
+                                        alt="Anselm Chan" class="w-20 h-20 rounded-lg object-cover">
+                                    <div>
+                                        <h3 class="text-xl font-semibold">Yoon Jong-bin</h3>
+                                        <p class="text-gray-400">Creator</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cast -->
+                            <div>
+                                <h2 class="text-2xl font-bold mb-6">តួសម្តែង</h2>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <!-- Cast Member 1 -->
+                                    <div
+                                        class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
+                                        <img src="https://image.tmdb.org/t/p/w92/nRGhwfuWqcTMoTmnhK4XmcRkZ6B.jpg"
+                                            alt="Michael Hui Koon-Man" class="w-20 h-20 rounded-lg object-cover">
+                                        <div>
+                                            <h3 class="text-lg font-semibold">Kim Da-mi</h3>
+                                            <p class="text-gray-400">Yoon Ena</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Cast Member 2 -->
+                                    <div
+                                        class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
+                                        <img src="https://image.tmdb.org/t/p/w92/natZWFVBAWLKWCYebgVGywHtsME.jpg"
+                                            alt="Dayo Wong Chi-Wah" class="w-20 h-20 rounded-lg object-cover">
+                                        <div>
+                                            <h3 class="text-lg font-semibold">Son Suk-ku</h3>
+                                            <p class="text-gray-400">Kim Hansaem</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Cast Member 3 -->
+                                    <div
+                                        class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
+                                        <img src="https://image.tmdb.org/t/p/w92/pii4fmXdkSEppsHSIhJ9jV5izX1.jpg"
+                                            alt="Michelle Wai Si-Nga" class="w-20 h-20 rounded-lg object-cover">
+                                        <div>
+                                            <h3 class="text-lg font-semibold">Kim Sung-kyun</h3>
+                                            <p class="text-gray-400">Yang Jeong-ho</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Cast Member 4 -->
+                                    <div
+                                        class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
+                                        <img src="https://image.tmdb.org/t/p/w92/6NS02ljZ2ssoFyxEM0Jp2SpWYC5.jpg"
+                                            alt="Tommy Chu Pak-Hong" class="w-20 h-20 rounded-lg object-cover">
+                                        <div>
+                                            <h3 class="text-lg font-semibold">Hyun Bong-sik</h3>
+                                            <p class="text-gray-400">TChoi San</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Cast Member 5 -->
+                                    <div
+                                        class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
+                                        <img src="https://image.tmdb.org/t/p/w92/yQwDVcqxcOLNyGotJ3T46UzSPy8.jpg"
+                                            alt="Tommy Chu Pak-Hong" class="w-20 h-20 rounded-lg object-cover">
+                                        <div>
+                                            <h3 class="text-lg font-semibold">Kwak Ja-hyung</h3>
+                                            <p class="text-gray-400">Roh Su-kwang</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Cast Member 6 -->
+                                    <div
+                                        class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
+                                        <img src="https://image.tmdb.org/t/p/w92/2gBgvjTsKQoINVkkr6vLYetoqeJ.jpg"
+                                            alt="Katrina Chan Pei-Shin" class="w-20 h-20 rounded-lg object-cover">
+                                        <div>
+                                            <h3 class="text-lg font-semibold">Jang Gyeok-su</h3>
+                                            <p class="text-gray-400">Hyeon Ho-geun</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Cast Member 7 -->
+                                    <div
+                                        class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
+                                        <img src="https://image.tmdb.org/t/p/w92/baINoANAu5iPrYz7cXTqPgeRTPe.jpg"
+                                            alt="Catherine Chau" class="w-20 h-20 rounded-lg object-cover">
+                                        <div>
+                                            <h3 class="text-lg font-semibold">Jeong Man-sik</h3>
+                                            <p class="text-gray-400">Tae Dong-su</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Cast Member 8 -->
+                                    <div
+                                        class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
+                                        <img src="https://image.tmdb.org/t/p/w92/wpomkPSSTdLyW6LoMWpUjIy4aGh.jpg"
+                                            alt="Catherine Chau" class="w-20 h-20 rounded-lg object-cover">
+                                        <div>
+                                            <h3 class="text-lg font-semibold">Ahn So-yo</h3>
+                                            <p class="text-gray-400">Yun Go Eun</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Cast Member 9 -->
+                                    <div
+                                        class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
+                                        <img src="https://image.tmdb.org/t/p/w92/nTFrq9CGv1xF7Ldn1X6PioOVZVX.jpg"
+                                            alt="Kiki Cheung Hoi-Kei" class="w-20 h-20 rounded-lg object-cover">
+                                        <div>
+                                            <h3 class="text-lg font-semibold">Hong Bi-ra</h3>
+                                            <p class="text-gray-400">Byeon Jiyun</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Cast Member 10 -->
+                                    <div
+                                        class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
+                                        <img src="https://image.tmdb.org/t/p/w92/uUr2lbaLyh7T3T2iLdHhHRDA1sf.jpg"
+                                            alt="Kiki Cheung Hoi-Kei" class="w-20 h-20 rounded-lg object-cover">
+                                        <div>
+                                            <h3 class="text-lg font-semibold">Kim Doh-yon</h3>
+                                            <p class="text-gray-400">Nam Hyeok-su</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+<script src="scrip.js"></script>
+<script>
+    //check agree terms to enable register button
+    const registerButton = document.getElementById('register');
+    const agreeTerms = document.getElementById('agreeTerms');
+    // Search functionality
+    const input = document.getElementById('search');
+    const list = document.getElementById('list');
+    const items = document.querySelectorAll('#list li');
+    //img trealer fullscreen
+    const modal = document.getElementById('fullscreenModal');
+    const fullImg = document.getElementById('fullscreenImage');
+    // Function to open image in fullscreen modal
+    function openFullscreen(img) {
+        fullImg.src = img.src;
+        modal.classList.remove('hidden');
+    }
+
+    // Click anywhere outside image to close
+    modal.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    //Search functionality
+    input.addEventListener('input', () => {
+        const query = input.value.trim().toUpperCase();
+
+        if (query.length > 0) {
+            list.classList.remove('hidden'); // Show list
+        } else {
+            list.classList.add('hidden'); // Hide list if no input
+        }
+
+        items.forEach(li => {
+            const text = li.textContent.toUpperCase();
+            li.style.display = text.includes(query) ? '' : 'none';
+        });
+    });
+
+    // Optional: Add click functionality to list items
+    items.forEach(li => {
+        li.addEventListener('click', () => {
+            input.value = li.textContent;
+            list.classList.add('hidden');
+        });
+    });
+
+    // Optional: Hide list when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search')) {
+            list.classList.add('hidden');
+        }
+    });
+    agreeTerms.addEventListener('click', function () {
+        registerButton.disabled = !agreeTerms.checked;
+    });
+    // Tab switching functionality
+    function showTab(tabName) {
+        // Hide all tab contents
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(content => {
+            content.classList.add('hidden');
+            content.classList.remove('active');
+        });
+
+        // Remove active state from all buttons
+        const buttons = document.querySelectorAll('.tab-button');
+        buttons.forEach(btn => {
+            btn.classList.remove('text-yellow-500', 'border-b-2', 'border-yellow-500', 'font-semibold');
+            btn.classList.add('text-gray-400', 'hover:text-white');
+        });
+
+        // Show selected tab content
+        document.getElementById(tabName).classList.remove('hidden');
+        document.getElementById(tabName).classList.add('active');
+
+        // Add active state to clicked button
+        const activeBtn = document.querySelector(`[onclick="showTab('${tabName}')"]`);
+        activeBtn.classList.remove('text-gray-400');
+        activeBtn.classList.add('text-yellow-500', 'border-b-2', 'border-yellow-500', 'font-semibold');
+    }
+
+    // Show info tab by default on page load
+    window.onload = function () {
+        showTab('info-tab');
+    };
+</script>
+
+</html>
