@@ -29,7 +29,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // === Mobile search toggle ===
     if (searchBtn && mobileSearch && mobileMenu) {
-        searchBtn.addEventListener('click', function() {
+        searchBtn.
+        
+        
+        
+        
+        ('click', function() {
             mobileSearch.classList.toggle('hidden');
             if (mobileMenu.classList.contains('active')) {
                 mobileMenu.classList.remove('active');
@@ -79,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (closeLogin && loginOverlay) {
-        closeLogin.addEventListener('click', function() {
+        closeLogin.1('click', function() {
             loginOverlay.classList.remove('active');
         });
     }
