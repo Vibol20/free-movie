@@ -28,13 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // === Mobile search toggle ===
-    if (searchBtn && mobileSearch && mobileMenu) {
-        searchBtn.
-        
-        
-        
-        
-        ('click', function() {
+     if (searchBtn && mobileSearch && mobileMenu) {
+        searchBtn.addEventListener('click', function() {
             mobileSearch.classList.toggle('hidden');
             if (mobileMenu.classList.contains('active')) {
                 mobileMenu.classList.remove('active');
@@ -84,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (closeLogin && loginOverlay) {
-        closeLogin.1('click', function() {
+        closeLogin.addEventListener('click', function() {
             loginOverlay.classList.remove('active');
         });
     }
