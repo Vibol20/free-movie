@@ -758,9 +758,9 @@
         <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
             <!-- Page Header -->
             <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6">
-                <h1 class="text-2xl md:text-3xl font-bold mb-2">លក្ខខណ្ឌនៃសេវាកម្ម</h1>
-                <p class="text-indigo-100">កាលបរិច្ឆេទប្រតិបត្តិ៖ ១ មករា ២០២៤</p>
-            </div>
+    <h1 class="text-2xl md:text-3xl font-bold mb-2">លក្ខខណ្ឌនៃសេវាកម្ម</h1>
+    <p id="current-date" class="text-indigo-100"></p>
+</div>
 
             <!-- Content -->
             <div class="p-6 md:p-8">
@@ -893,6 +893,16 @@
     const input = document.getElementById('search');
     const list = document.getElementById('list');
     const items = document.querySelectorAll('#list li');
+    //date display
+    const today = new Date();
+    const khmerMonths = [
+        "មករា", "កុម្ភៈ", "មិនា", "មេសា", "ឧសភា", "មិថុនា",
+        "កក្កដា", "សីហា", "កញ្ញា", "តុលា", "វិច្ឆិកា", "ធ្នូ"
+    ];
+    const day = today.getDate();
+    const month = khmerMonths[today.getMonth()];
+    const year = today.getFullYear();
+    const khmerDate = `កាលបរិច្ឆេទប្រតិបត្តិ៖ ${day} ${month} ${year}`;
 
     input.addEventListener('input', () => {
         const query = input.value.trim().toUpperCase();
@@ -932,7 +942,6 @@
     continueBtn.addEventListener('click', function () {
         if (!this.disabled) {
             alert('អ្នកបានទទួលយកលក្ខខណ្ឌនៃសេវាកម្មដោយជោគជ័យ!');
-            // In a real application, you would redirect to the main site
             // window.location.href = '/';
         }
     });
@@ -940,6 +949,8 @@
     agreeTerms.addEventListener('click', function () {
         registerButton.disabled = !agreeTerms.checked;
     });
+    //real-time date display
+    document.getElementById("current-date").textContent = khmerDate;
 </script>
 
 </html>
