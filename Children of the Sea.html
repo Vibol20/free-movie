@@ -119,6 +119,15 @@
             flex: none;
         }
     }
+
+    /* show more */
+    .line-clamp {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        line-clamp: 3;
+    }
 </style>
 
 <body>
@@ -463,8 +472,7 @@
                         </button>
                         <div id="movies" class="dropdown-content pl-4">
                             <a href="./movie-khmer.html" class="block py-2 hover:text-yellow-400">និយាយខ្មែរ</a>
-                            <a href="speaking-khmer.html"
-                                class="block py-2 hover:text-yellow-400">អក្សរខ្មែរ</a>
+                            <a href="speaking-khmer.html" class="block py-2 hover:text-yellow-400">អក្សរខ្មែរ</a>
                             <a href="https://khdiamond.net/genre/%e1%9e%a5%e1%9e%8f%e1%9e%82%e1%9e%b7%e1%9e%8f%e1%9e%90%e1%9f%92%e1%9e%9b%e1%9f%83/"
                                 class="block py-2 hover:text-yellow-400">ឥតគិតថ្លៃ Free</a>
                             <a href="https://khdiamond.net/genre/%e1%9e%82%e1%9e%b7%e1%9e%8f%e1%9e%8f%e1%9e%98%e1%9f%92%e1%9e%9b%e1%9f%83-paid/"
@@ -746,7 +754,7 @@
     <section class="text-white min-h-screen bg-gray-800 mt-14">
         <!-- Header Section with Background -->
         <div class="relative h-64 bg-cover bg-center"
-            style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('https://image.tmdb.org/t/p/original/A4B2SB3zj4Crin8h6klmLCrYyLc.jpg');">
+            style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url('https://image.tmdb.org/t/p/original/3E6qZdwD3SroGvUZPwyXW7Jg0DJ.jpg');">
             <div class="absolute bottom-8 sm:bottom-10 md:bottom-12 left-1/2 transform -translate-x-1/2 text-center 
          px-4 sm:px-6 md:px-8 lg:px-10 translate-y-[-15px] sm:translate-y-0 w-[95%] sm:w-auto pb-12 sm:pb-0">
                 <div class="inline-block text-white text-sm sm:text-base md:text-lg leading-relaxed">
@@ -768,7 +776,7 @@
 
 
             <!-- Play Button -->
-            <a href="https://www.youtube.com/watch?v=gDFWHD9cm-E">
+            <a href="https://www.youtube.com/watch?v=SOhRCIv-VOE">
                 <div class="absolute bottom-4 left-4 flex items-center gap-2 cursor-pointer hover:opacity-80">
                     <div class="w-8 h-8 bg-gray-500 bg-opacity rounded-full flex items-center justify-center">
                         <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -794,19 +802,19 @@
             <div class="flex flex-col md:flex-row gap-8">
                 <!-- Movie Poster -->
                 <div class="flex-shrink-0">
-                    <img src="https://khdiamond.net/wp-content/uploads/2024/12/hIK5kEdFwOHnHTa06ntTVSfG9im-200x300.jpg" alt="The Last Dance"
-                        class="w-48 h-72 object-cover rounded-lg shadow-2xl">
+                    <img src="https://khdiamond.net/wp-content/uploads/2025/11/9Fch8X5C5yW2srPVBiq6LNRvwd-200x300.jpg"
+                        alt="The Last Dance" class="w-48 h-72 object-cover rounded-lg shadow-2xl">
                 </div>
 
                 <!-- Movie Details -->
                 <div class="flex-1">
-                    <h1 class="text-3xl md:text-4xl font-bold mb-4">Fate/stay night</h1>
+                    <h1 class="text-3xl md:text-4xl font-bold mb-4">Children of the Sea</h1>
 
                     <div class="flex items-center gap-4 text-sm text-gray-400 mb-4">
-                        <span>Aug. 15, 2020</span>
+                        <span>Jun. 07, 2019</span>
                         <span>Japan</span>
-                        <span>120 Min.</span>
-                        <span class="px-2 py-1 bg-gray-700 rounded">TV-MA</span>
+                        <span>111 Min.</span>
+                        <span class="px-2 py-1 bg-gray-700 rounded">NR</span>
                     </div>
 
                     <!-- Rating -->
@@ -815,9 +823,10 @@
                         <div class="flex flex-col">
                             <div class="flex gap-1 text-yellow-500">
                                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                <span class="text-gray-600">★</span><span class="text-gray-600">★</span><span class="text-gray-600">★</span><span class="text-gray-600">★</span><span class="text-gray-600">★</span>
+                                <span>★</span><span>★</span><span class="text-gray-600">★</span><span
+                                    class="text-gray-600">★</span><span class="text-gray-600">★</span>
                             </div>
-                            <div class="text-sm text-gray-400">5 votes</div>
+                            <div class="text-sm text-gray-400">6 votes</div>
                         </div>
                         <button class="ml-4 px-4 py-2 border border-gray-600 rounded hover:bg-gray-800 transition">
                             Your rating: 0
@@ -845,20 +854,45 @@
                         <!-- Synopsis -->
                         <div class="mb-8">
                             <h2 class="text-xl font-semibold mb-3">សង្ខេប</h2>
-                            <p class="text-gray-300 leading-relaxed">
-                                As Sakura drowns in the murky darkness of the sins she has committed, Shirou’s vow to protect her at all costs leads him into a raging battle to put an end to the Holy Grail War. Will Shirou’s wish reach Sakura even as he challenges fate itself in a desperate battle against the rising tide?
-                            </p>
+
+                            <div class="text-gray-300 leading-relaxed">
+                                <p id="synopsisText" class="line-clamp max-w-none">
+                                    Ruka is a young girl whose parents are separated and whose father works in an
+                                    aquarium.
+                                    When two boys, Umi and Sora, who were raised in the sea by dugongs, are brought to
+                                    the
+                                    aquarium, Ruka feels drawn to them and begins to realize that she has the same sort
+                                    of
+                                    supernatural connection to the ocean that they do. Umi and Sora’s special power
+                                    seems to
+                                    be connected to strange events that have been occurring more and more frequently,
+                                    such
+                                    as the appearance of sea creatures far from their home territory and the
+                                    disappearance
+                                    of aquarium animals around the world. However, the exact nature of the boys’ power
+                                    and
+                                    of the abnormal events is unknown, and Ruka gets drawn into investigating the
+                                    mystery
+                                    that surrounds her new friends.
+                                </p>
+
+                                <button onclick="document.getElementById('synopsisText').classList.toggle('line-clamp');
+                        this.textContent = this.textContent.includes('more') ? 'Show less ←' : 'Show more →'"
+                                    class=" text-blue-400 hover:text-blue-200 text-sm font-medium transition">
+                                    Show more →
+                                </button>
+                            </div>
                         </div>
 
                         <!-- Gallery -->
                         <div class="grid grid-cols-3 gap-4 mb-8">
-                            <img src="https://image.tmdb.org/t/p/original/tLfQZkB4yBlO1h5WMIFLJgHYcZD.jpg" alt="Scene 1"
+                            <img src="https://image.tmdb.org/t/p/original/wDbcEcTIfTp7yDBj0zVnqpQ24N7.jpg" alt="Scene 1"
                                 class="w-full h-60 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
                                 onclick="openFullscreen(this)">
-                            <img src="https://image.tmdb.org/t/p/original/mWb5UjxCmevMlvbxnXc9Y3zc00w.jpg" alt="Scene 2"
+                            <img src="https://image.tmdb.org/t/p/original/3E6qZdwD3SroGvUZPwyXW7Jg0DJ.jpg" alt="Scene 2"
                                 class="w-full h-60 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
                                 onclick="openFullscreen(this)">
-                            <img src="https://image.tmdb.org/t/p/original/A4B2SB3zj4Crin8h6klmLCrYyLc.jpg" alt="Scene 3"
+                            <img src="https://image.tmdb.org/t/p/original/cmhFNYj44X0TZAsdsv50z7L1qne.jpg" alt="Scene 3"
                                 class="w-full h-60 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
                                 onclick="openFullscreen(this)">
                         </div>
@@ -873,22 +907,22 @@
                         <div class="space-y-4 mb-8">
                             <div class="flex items-center gap-4">
                                 <span class="text-gray-400 w-32">ចំណងជើងដើម</span>
-                                <span class="text-yellow-500">劇場版</span>
+                                <span class="text-yellow-500">海獣の子供</span>
                             </div>
                             <div class="flex items-center gap-4">
                                 <span class="text-gray-400 w-36">រង្វាយតម្លៃលើ IMDb</span>
                                 <div class="flex items-center gap-2">
                                     <span class="text-yellow-500">★</span>
-                                    <span>7.9</span>
-                                    <span class="text-gray-400">2,848 នាក់</span>
+                                    <span>6.5</span>
+                                    <span class="text-gray-400">4,240 នាក់</span>
                                 </div>
                             </div>
                             <div class="flex items-center gap-4">
                                 <span class="text-gray-400 w-36">រង្វាយតម្លៃលើ TMDb</span>
                                 <div class="flex items-center gap-2">
                                     <span class="text-yellow-500">★</span>
-                                    <span>7.7</span>
-                                    <span class="text-gray-400">179 នាក់</span>
+                                    <span>7.1</span>
+                                    <span class="text-gray-400">325 នាក់</span>
                                 </div>
                             </div>
                         </div>
@@ -944,11 +978,10 @@
                             <div class="mb-12">
                                 <h2 class="text-2xl font-bold mb-6">អ្នកដឹងនាំ</h2>
                                 <div class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg max-w-md">
-                                    <div
-                                        class="w-20 h-20 rounded-lg bg-gray-800 flex items-center justify-center text-3xl text-gray-600">
-                                        ?</div>
+                                    <img src="https://image.tmdb.org/t/p/w92/bgPzpkbm3xjXd5ujTIq36kk6IEa.jpg"
+                                        alt="Anselm Chan" class="w-20 h-20 rounded-lg object-cover">
                                     <div>
-                                        <h3 class="text-xl font-semibold">Takuro Takahashi</h3>
+                                        <h3 class="text-xl font-semibold">Kenichi Konishi</h3>
                                         <p class="text-gray-400">Director</p>
                                     </div>
                                 </div>
@@ -961,113 +994,101 @@
                                     <!-- Cast Member 1 -->
                                     <div
                                         class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
-                                        <img src="https://image.tmdb.org/t/p/w92/szqqQ8T0gzuSxjU2rnWcthsaSJT.jpg"
+                                        <img src="https://image.tmdb.org/t/p/w92/GkmFEAuslzWJ4yYhj9KahmmGdE.jpg"
                                             alt="Michael Hui Koon-Man" class="w-20 h-20 rounded-lg object-cover">
                                         <div>
-                                            <h3 class="text-lg font-semibold">Noriaki Sugiyama</h3>
-                                            <p class="text-gray-400">Shirou Emiya (voice)</p>
+                                            <h3 class="text-lg font-semibold">Mana Ashida</h3>
+                                            <p class="text-gray-400">Ruka Azumi (voice)</p>
                                         </div>
                                     </div>
 
                                     <!-- Cast Member 2 -->
                                     <div
                                         class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
-                                        <img src="https://image.tmdb.org/t/p/w92/dtrD4hJFyKP6mL6qO3oBQ8gVgKg.jpg"
+                                        <img src="https://image.tmdb.org/t/p/w92/q1sNCAf4vz4Yrw5y59TQVJFHDj6.jpg"
                                             alt="Dayo Wong Chi-Wah" class="w-20 h-20 rounded-lg object-cover">
                                         <div>
-                                            <h3 class="text-lg font-semibold">Noriko Shitaya</h3>
-                                            <p class="text-gray-400">Sakura Matou (voice)</p>
+                                            <h3 class="text-lg font-semibold">Hiiro Ishibashi</h3>
+                                            <p class="text-gray-400">Umi (voice)</p>
                                         </div>
                                     </div>
 
                                     <!-- Cast Member 3 -->
                                     <div
                                         class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
-                                        <img src="https://image.tmdb.org/t/p/w92/vb4cgQUlZdaZT3P4RI27x2PGwpH.jpg"
+                                        <img src="https://image.tmdb.org/t/p/w92/sSCgfHOxLhZ2eB02re8J1bBDuUK.jpg"
                                             alt="Michelle Wai Si-Nga" class="w-20 h-20 rounded-lg object-cover">
                                         <div>
-                                            <h3 class="text-lg font-semibold">Ayako Kawasumi</h3>
-                                            <p class="text-gray-400">Saber Alter (voice)</p>
+                                            <h3 class="text-lg font-semibold">Seishu Uragami</h3>
+                                            <p class="text-gray-400">Sora (voice)</p>
                                         </div>
                                     </div>
 
                                     <!-- Cast Member 4 -->
                                     <div
                                         class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
-                                        <img src="https://image.tmdb.org/t/p/w92/us6FMwXCeSUR2YyByxVcgOUjiIA.jpg"
+                                        <img src="https://image.tmdb.org/t/p/w92/im1ZzQdfjd5NL9wjFwZj4zh6rOC.jpg"
                                             alt="Tommy Chu Pak-Hong" class="w-20 h-20 rounded-lg object-cover">
                                         <div>
-                                            <h3 class="text-lg font-semibold">Kana Ueda</h3>
-                                            <p class="text-gray-400">Rin Tohsaka (voice)</p>
+                                            <h3 class="text-lg font-semibold">Win Morisaki</h3>
+                                            <p class="text-gray-400">Anglade (voice)</p>
                                         </div>
                                     </div>
 
                                     <!-- Cast Member 5 -->
                                     <div
                                         class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
-                                        <img src="https://image.tmdb.org/t/p/w92/jb3fSusebJ0yDTZ6bB9ckL3mAvu.jpg"
+                                        <img src="https://image.tmdb.org/t/p/w92/zWj5NAEXDSWcyYSG7JL7Cc1RR4A.jpg"
                                             alt="Tommy Chu Pak-Hong" class="w-20 h-20 rounded-lg object-cover">
                                         <div>
-                                            <h3 class="text-lg font-semibold">Mai Kadowaki</h3>
-                                            <p class="text-gray-400">Illyasviel von Einzbern (voice)</p>
+                                            <h3 class="text-lg font-semibold">Goro Inagaki</h3>
+                                            <p class="text-gray-400">Masaaki Azumi (voice)</p>
                                         </div>
                                     </div>
 
                                     <!-- Cast Member 6 -->
                                     <div
                                         class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
-                                        <img src="https://image.tmdb.org/t/p/w92/r5v8Gsu3ufIdeCussUOXvM6fWEi.jpg"
+                                        <img src="https://image.tmdb.org/t/p/w92/tgozZzaAFnOr7YQ8Y9Yk9p2e2JC.jpg"
                                             alt="Katrina Chan Pei-Shin" class="w-20 h-20 rounded-lg object-cover">
                                         <div>
-                                            <h3 class="text-lg font-semibold">Miki Ito</h3>
-                                            <p class="text-gray-400">Taiga Fujimura (voice)</p>
+                                            <h3 class="text-lg font-semibold">Yu Aoi</h3>
+                                            <p class="text-gray-400">Kanako Azumi (voice)</p>
                                         </div>
                                     </div>
 
                                     <!-- Cast Member 7 -->
                                     <div
                                         class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
-                                        <img src="https://image.tmdb.org/t/p/w92/wYhv4BtQnc6bZp2Qnh6GiYjmNKC.jpg"
+                                        <img src="https://image.tmdb.org/t/p/w92/pIB7tqEfwnvxYbO9qoN1BhDUcoA.jpg"
                                             alt="Catherine Chau" class="w-20 h-20 rounded-lg object-cover">
                                         <div>
-                                            <h3 class="text-lg font-semibold">Jouji Nakata</h3>
-                                            <p class="text-gray-400">Kirei Kotomine (voice)</p>
+                                            <h3 class="text-lg font-semibold">Tohru Watanabe</h3>
+                                            <p class="text-gray-400">Teacher (voice)</p>
                                         </div>
                                     </div>
 
                                     <!-- Cast Member 8 -->
                                     <div
                                         class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
-                                        <img src="https://image.tmdb.org/t/p/w92/7zeWvl3m6EAqCL0TKwGL3hVso3F.jpg"
+                                        <img src="https://image.tmdb.org/t/p/w92/bXmBnejA48Da7LzLdJqTKSVPCwd.jpg"
                                             alt="Catherine Chau" class="w-20 h-20 rounded-lg object-cover">
                                         <div>
-                                            <h3 class="text-lg font-semibold">Masane Tsukayama</h3>
-                                            <p class="text-gray-400">Zouken Matou (voice)</p>
+                                            <h3 class="text-lg font-semibold">Min Tanaka</h3>
+                                            <p class="text-gray-400">Jimu (voice)</p>
                                         </div>
                                     </div>
 
                                     <!-- Cast Member 9 -->
                                     <div
                                         class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
-                                        <img src="https://image.tmdb.org/t/p/w92/2n7pYsUrUq4qg4VtQemndzIpOlb.jpg"
+                                        <img src="https://image.tmdb.org/t/p/w92/earLCH2wxBTx2IoK7pJcsHUBGBe.jpg"
                                             alt="Kiki Cheung Hoi-Kei" class="w-20 h-20 rounded-lg object-cover">
                                         <div>
-                                            <h3 class="text-lg font-semibold">Yuu Asakawa</h3>
-                                            <p class="text-gray-400">Rider (voice)</p>
+                                            <h3 class="text-lg font-semibold">Sumiko Fuji</h3>
+                                            <p class="text-gray-400">Dede (voice)</p>
                                         </div>
                                     </div>
-
-                                    <!-- Cast Member 10 -->
-                                    <div
-                                        class="flex items-center gap-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg hover:bg-opacity-70 transition">
-                                        <img src="https://image.tmdb.org/t/p/w92/4S7c3n3r07A83HvkLrnWZGVhiHg.jpg"
-                                            alt="Kiki Cheung Hoi-Kei" class="w-20 h-20 rounded-lg object-cover">
-                                        <div>
-                                            <h3 class="text-lg font-semibold">Junichi Suwabe</h3>
-                                            <p class="text-gray-400">Archer (voice)</p>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
